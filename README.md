@@ -1,19 +1,19 @@
 # Nome do projeto
 
-Escreva um ou dois parágrafo resumindo o objetivo do seu projeto.
+Favsustein 
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Ricardo Santana Kill
+* André Luiz figueiredo Rosa
+* Bruno da Silva de Paulo
+* Marco Túlio Sales de Deus
+* João Marcelo sposito
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
-
+* Diego Augusto de Faria Barros  
+* Michelli Anne Soares de Andrade 
 
 
 ## Instruções de utilização 
