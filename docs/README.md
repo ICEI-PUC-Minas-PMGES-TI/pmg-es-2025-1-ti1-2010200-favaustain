@@ -2,25 +2,16 @@
 
 Informações básicas do projeto.
 
-* **Projeto:** [NOME DO PROJETO]
-* **Repositório GitHub:** [LINK PARA O REPOSITÓRIO NO GITHUB]
+* **Projeto:** Fav sustain
+* **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2010200-favaustain.git
 * **Membros da equipe:**
 
-  * [Fulano](https://github.com/fulano) ⚠️ EXEMPLO ⚠️
-  * [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
-  * [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
+  * Marco Túlio Sales de Deus (https://github.com/MarcoTulioES)
+  * Ricardo Santana Kill      
+  * André Luiz figueiredo Rosa (https://github.com/Dedecb)
+  * Bruno da Silva de Paulo (https://github.com/BrUnOBSP-SVANTH)
+  * João Marcelo sposito
 
-A documentação do projeto é estruturada da seguinte forma:
-
-1. Introdução
-2. Contexto
-3. Product Discovery
-4. Product Design
-5. Metodologia
-6. Solução
-7. Referências Bibliográficas
-
-✅ [Documentação de Design Thinking (MIRO)](files/processo-dt.pdf)
 
 # Contexto
 
@@ -28,73 +19,40 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 ## Problema
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
->
-> **Orientações**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+O alto custo da conta de luz, ainda é uma triste realidade na vida de milhares de moradores de comunidades periféricas, comprometendo, muitas vezes, parte significativa da sua renda mensal. A falta de acesso a alternativas sustentáveis de energia e a fragilidade na infraestrutura elétrica. Ademais, a instabilidade no fornecimento e a falta de políticas públicas voltadas para a democratização da energia corroboram para a permanência do descaso. Urge, portanto, uma necessidade real de soluções que reduzam os gastos energéticos dessas populações, proporcionando-os mais segurança, autonomia e uma vida mais digna.
 
 ## Objetivos
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Orientações**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+A Fav Sustain surge como uma solução dos problemas do morador de comunidade periférica, unindo tecnologia, sustentabilidade e inclusão social. Esse projeto busca, por meio de um software, promover a redução da conta de luz,  aliando funcionalidades como o monitoramento do consumo e a
+venda de soluções sustentáveis, como painéis solares de baixo custo. Sendo assim, busca-se democratizar o acesso a tecnologia verde, proporcionando uma melhor qualidade de vida aos moradores usuário do nosso sistema e a preservação do meio ambiente. 
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+Tem gente que vive com o sol batendo na laje, mas continua no escuro. É assim pra muitas famílias das periferias: a luz do sol é de graça, mas a da conta de luz pesa. Todo mês, lá vem o susto: tarifas altas, fios mal cuidados, falta de informação… e nenhum botão pra desligar o problema.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Orientações**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Foi daí que nasceu o Fav Sustain. Um projeto que não quer reinventar o mundo, só ajudar quem vive nele com dignidade. A ideia é simples: criar um aplicativo que ajuda o morador a entender como a energia tá sendo usada, onde dá pra economizar e, mais do que isso, mostrar alternativas reais, como os painéis solares de baixo custo — soluções que hoje parecem distantes, mas podem ficar bem mais próximas.
+
+O aplicativo vai ser feito ouvindo quem importa: os próprios moradores. Vamos aplicar questionários, fazer entrevistas, entender os desafios de verdade, sem achismo. Porque tecnologia que não escuta vira só mais um monte de botão que ninguém aperta.
+
+E por que isso importa? Porque uma pequena economia na conta de luz pode virar comida no prato, ou um gás que dura mais. Porque um aplicativo no celular pode ser a chave pra uma vida mais leve. E porque, no fim das contas, o sol brilha pra todo mundo — só falta alguém construir a janela certa.
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+O projeto Fav Sustain é direcionado a moradores de comunidades periféricas, com ênfase especial em famílias de baixa renda que enfrentam dificuldades para arcar com os custos da energia elétrica. Trata-se de um grupo socialmente vulnerável, que, em sua maioria, possui acesso limitado a informações técnicas sobre consumo consciente e sustentável de energia, além de pouca familiaridade com tecnologias voltadas à geração alternativa, como a energia solar.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva quais são as pessoas que usarão a sua aplicação indicando os diferentes perfis. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição textual, ou diagramas de personas, mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Dentro desse público, destaca-se um segmento de grande relevância econômica e social: os pequenos empreendedores locais. Profissionais como barbeiros, donos de mercearias, açougues, oficinas e salões de beleza dependem diretamente do fornecimento de energia elétrica para manter seus negócios operando. No entanto, muitos enfrentam instabilidade no abastecimento e tarifas elevadas, o que compromete sua produtividade e reduz significativamente os lucros mensais.
 
 # Product Discovery
 
 ## Etapa de Entendimento
 
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
+Matriz CSD (Certezas, Suposições e Dúvidas): Organizamos as informações levantadas sobre o consumo de energia nas periferias e identificamos pontos que precisam de mais investigação, como a viabilidade da adoção de tecnologias sustentáveis de baixo custo.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> * **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> * **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> * **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> * **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
+Mapa de Stakeholders: permitiu identificar os principais atores envolvidos com o problema, incluindo moradores, pequenos comerciantes (como barbeiros, donos de açougues, donos de mercearias), líderes comunitários, organizações sociais e possíveis fornecedores de soluções sustentáveis.
+
+Entrevistas qualitativas: foram conduzidas entrevistas com moradores de periferias e microempreendedores locais para entender seus hábitos de consumo, nível de conhecimento sobre energia solar e barreiras enfrentadas para economizar energia. Essas entrevistas foram essenciais para validar hipóteses sobre o problema.
+
+Highlights de pesquisa: foram compilados os principais achados das entrevistas, revelando padrões como a falta de acesso à informação sobre economia de energia, receio quanto ao investimento inicial em tecnologias sustentáveis e interesse crescente em alternativas como energia solar, desde que acessíveis.
 
 ## Etapa de Definição
 
@@ -102,50 +60,110 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
+Persona 1: Marcelo Silva – O Trabalhador Popular
+Idade: 40 anos
+
+Profissão: Pedreiro
+
+Hobby: Jogar bola
+
+Sonhos: Construir sua casa e garantir uma boa vida para seus filhos
+
+Comportamento: Usa o celular no dia a dia e assiste TV com a família. Valoriza o tempo em casa.
+
+Objetivo com o Fav Sustain: Reduzir a conta de luz e ter energia estável em sua residência.
+
+Marcelo representa o público principal do Fav Sustain — trabalhadores da periferia que sofrem com contas altas de energia e instabilidade elétrica. O software deve ser simples, acessível, com linguagem clara e oferecer opções de financiamento e compra facilitada de placas solares.
+
+Persona 2: Marcelo Pires da Silva – O Comerciante Local
+Idade: 53 anos
+
+Profissão: Dono de mercearia e bar
+
+Hobby: Cuidar de plantas e jogar sinuca
+
+Sonhos: Ter um sítio para se aposentar
+
+Comportamento: Utiliza celular, televisor e aparelhos como geladeiras e freezers constantemente.
+
+Objetivo com o Fav Sustain: Diminuir os gastos energéticos do comércio e evitar interrupções.
+
+Marcelo Pires representa os microempreendedores da periferia, que enfrentam desafios com energia cara e instável. A solução deve incluir uma simulação de economia para estabelecimentos comerciais e apresentar como a energia solar pode evitar perdas com quedas de luz.
+
+Persona 3: Jordan de Andrede Agraméu – O Empresário Sustentável
+Idade: 34 anos
+
+Profissão: Dono de franquias
+
+Hobby: Correr
+
+Sonhos: Transformar sua empresa em referência de sustentabilidade
+
+Comportamento: Usa notebook, tablet, no-breaks e equipamentos automatizados
+
+Objetivo com o Fav Sustain: Buscar soluções sustentáveis e econômicas para seus negócios.
+
+Jordan representa o público empresarial que pode ampliar o alcance do projeto, seja como parceiro, patrocinador ou cliente premium. A plataforma pode oferecer funcionalidades voltadas à gestão energética e relatórios de impacto sustentável.
 
 # Product Design
 
-Nesse momento, vamos transformar os insights e validações obtidos em soluções tangíveis e utilizáveis. Essa fase envolve a definição de uma proposta de valor, detalhando a prioridade de cada ideia e a consequente criação de wireframes, mockups e protótipos de alta fidelidade, que detalham a interface e a experiência do usuário.
+ PRIORIDADES DA SOLUÇÃO
+
+-Reduzir os custos com energia elétrica
+
+-Oferecer uma interface simples e intuitiva para usuários com pouco acesso à tecnologia
+
+-Acompanhar a geração e o consumo de energia em tempo real
+
+-Emitir alertas de falhas ou quedas no sistema
+
+-Enviar lembretes para manutenção preventiva dos sistemas
+
+-Gerar relatórios de economia e retorno de investimento
+
+-Oferecer previsões climáticas para otimizar o uso da energia solar
+
+-Promover a conscientização sobre o impacto ambiental
+
+  SOLUÇÕES PROPOSTAS
+Painel de Monitoramento de Energia
+Visualização em tempo real da geração e do consumo de energia elétrica, com indicadores simples (ícones, cores e gráficos intuitivos).
+
+Alertas Inteligentes
+Notificações automáticas sobre falhas no sistema, quedas de energia ou necessidade de limpeza/manutenção dos painéis solares.
+
+Relatórios e Gráficos de Economia
+Geração de relatórios visuais que mostram a economia mensal, o retorno sobre investimento e o impacto ambiental evitado.
+
+Previsão do Tempo Integrada
+Informações climáticas para ajudar o usuário a planejar melhor o uso da energia solar.
+
+Sistema de Dicas e Educação Energética
+Sessão com orientações práticas sobre como usar melhor a energia e entender o sistema instalado.
+
+Interface Acessível e Inclusiva
+Navegação simples, com uso de elementos visuais claros e linguagem acessível a todos os perfis de usuários.
+
 
 ## Histórias de Usuários
 
-Com base na análise das personas foram identificadas as seguintes histórias de usuários:
-
-| EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`        | PARA ...`MOTIVO/VALOR`               |
-| --------------------- | ------------------------------------------ | -------------------------------------- |
-| Usuário do sistema   | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las             |
-| Administrador         | Alterar permissões ⚠️ EXEMPLO ⚠️      | Permitir que possam administrar contas |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+| EU COMO     | PRECISO DE      | PARA                  |
+|-------------|------------------|------------------------|
+| Consumidor  | Monitorar energia| Ver economia           |
+| Consumidor  | Ver clima        | Usar melhor solar      |
+| Consumidor  | Alertas          | Acionar suporte        |
+| Comerciante | Software simples | Contagens fáceis       |
+| Proprietário| Ver retorno      | Avaliar economia       |
+| Empresário  | Ver impacto      | Ser sustentável        |
+| Adm. cond.  | Relatórios       | Mostrar benefícios     |
+| Dono sistema| Lembrete limpeza | Manter eficiência      |
+| Comerciante | Garantir func.   | Operar na queda de luz |
 
 ## Proposta de Valor
 
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
-
-##### Proposta para Persona XPTO ⚠️ EXEMPLO ⚠️
-
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+![Proposta de valor 1](proposta_valor1.png)
+![Proposta de valor 2](proposta_valor2.png)
+![Proposta de valor 3](proposta_valor3.png)
 
 ## Requisitos
 
