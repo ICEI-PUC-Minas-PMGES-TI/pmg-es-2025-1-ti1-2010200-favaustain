@@ -7,7 +7,7 @@ Informações básicas do projeto.
 * **Membros da equipe:**
 
   * Marco Túlio Sales de Deus (https://github.com/MarcoTulioES)
-  * Ricardo Santana Kill      
+  * Ricardo Santana Kill      (https://github.com/Knumi5)
   * André Luiz figueiredo Rosa (https://github.com/Dedecb)
   * Bruno da Silva de Paulo (https://github.com/BrUnOBSP-SVANTH)
   * João Marcelo sposito (https://github.com/joaomsposito)
