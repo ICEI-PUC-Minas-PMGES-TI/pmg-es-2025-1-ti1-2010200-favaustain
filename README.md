@@ -1,7 +1,4 @@
-# Nome do projeto
-
-Favsustein 
-
+# FavSustain
 ## Alunos integrantes da equipe
 
 * Ricardo Santana Kill
