@@ -15,7 +15,7 @@ Informações básicas do projeto.
 
 # Contexto
 
-Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa e público-alvo.
+No Brasil, milhões de famílias em comunidades periféricas enfrentam diariamente o desafio de conviver com contas de luz exorbitantes, que chegam a consumir até 30% da renda familiar mensal. Enquanto isso, o potencial da energia solar - abundante e gratuita - permanece subutilizado nessas localidades. O FavSustain surge como uma ponte entre essa realidade e um futuro mais sustentável, utilizando tecnologia web para democratizar o acesso à energia limpa e acessível.
 
 ## Problema
 
@@ -147,17 +147,14 @@ Navegação simples, com uso de elementos visuais claros e linguagem acessível 
 
 ## Histórias de Usuários
 
-| EU COMO     | PRECISO DE      | PARA                  |
-|-------------|------------------|------------------------|
-| Consumidor  | Monitorar energia| Ver economia           |
-| Consumidor  | Ver clima        | Usar melhor solar      |
-| Consumidor  | Alertas          | Acionar suporte        |
-| Comerciante | Software simples | Contagens fáceis       |
-| Proprietário| Ver retorno      | Avaliar economia       |
-| Empresário  | Ver impacto      | Ser sustentável        |
-| Adm. cond.  | Relatórios       | Mostrar benefícios     |
-| Dono sistema| Lembrete limpeza | Manter eficiência      |
-| Comerciante | Garantir func.   | Operar na queda de luz |
+Dona Maria (58 anos, aposentada): "Como moradora de comunidade, quero entender quanto posso economizar com energia solar para decidir se vale a pena investir minhas economias."
+Seu Jorge (dono de mercearia): "Como pequeno comerciante, preciso monitorar meu consumo em tempo real para evitar surpresas na conta de luz e planejar melhor meus gastos."
+Carlos (líder comunitário): "Como representante da associação, quero relatórios simples de economia energética para mostrar aos moradores os benefícios coletivos."
+Ana (mãe solo): "Como mãe, preciso de alertas quando meu consumo está acima do normal para ajustar meus hábitos e evitar contas altas."
+Marcelo (eletricista): "Como profissional, quero receber notificações de manutenção preventiva para manter os sistemas operando com eficiência."
+Dra. Juliana (médica): "Como responsável pelo posto de saúde, preciso garantir energia estável para não interromper o atendimento aos pacientes."
+Tiago (empreendedor): "Como dono de startup, quero calcular o retorno do investimento em solar para convencer meus investidores."
+Sra. Rosa (dona de pensão): "Como administradora, preciso de um sistema simples para gerenciar o consumo e dividir os custos entre os hóspedes."
 
 ## Proposta de Valor
 
