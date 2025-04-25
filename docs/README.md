@@ -15,7 +15,7 @@ Informações básicas do projeto.
 
 # Contexto
 
-No Brasil, milhões de famílias em comunidades periféricas enfrentam diariamente o desafio de conviver com contas de luz exorbitantes, que chegam a consumir até 30% da renda familiar mensal. Enquanto isso, o potencial da energia solar - abundante e gratuita - permanece subutilizado nessas localidades. O FavSustain surge como uma ponte entre essa realidade e um futuro mais sustentável, utilizando tecnologia web para democratizar o acesso à energia limpa e acessível.
+Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa e público-alvo.
 
 ## Problema
 
@@ -147,14 +147,17 @@ Navegação simples, com uso de elementos visuais claros e linguagem acessível 
 
 ## Histórias de Usuários
 
-Dona Maria (58 anos, aposentada): "Como moradora de comunidade, quero entender quanto posso economizar com energia solar para decidir se vale a pena investir minhas economias."
-Seu Jorge (dono de mercearia): "Como pequeno comerciante, preciso monitorar meu consumo em tempo real para evitar surpresas na conta de luz e planejar melhor meus gastos."
-Carlos (líder comunitário): "Como representante da associação, quero relatórios simples de economia energética para mostrar aos moradores os benefícios coletivos."
-Ana (mãe solo): "Como mãe, preciso de alertas quando meu consumo está acima do normal para ajustar meus hábitos e evitar contas altas."
-Marcelo (eletricista): "Como profissional, quero receber notificações de manutenção preventiva para manter os sistemas operando com eficiência."
-Dra. Juliana (médica): "Como responsável pelo posto de saúde, preciso garantir energia estável para não interromper o atendimento aos pacientes."
-Tiago (empreendedor): "Como dono de startup, quero calcular o retorno do investimento em solar para convencer meus investidores."
-Sra. Rosa (dona de pensão): "Como administradora, preciso de um sistema simples para gerenciar o consumo e dividir os custos entre os hóspedes."
+| EU COMO     | PRECISO DE      | PARA                  |
+|-------------|------------------|------------------------|
+| Consumidor  | Monitorar energia| Ver economia           |
+| Consumidor  | Ver clima        | Usar melhor solar      |
+| Consumidor  | Alertas          | Acionar suporte        |
+| Comerciante | Software simples | Contagens fáceis       |
+| Proprietário| Ver retorno      | Avaliar economia       |
+| Empresário  | Ver impacto      | Ser sustentável        |
+| Adm. cond.  | Relatórios       | Mostrar benefícios     |
+| Dono sistema| Lembrete limpeza | Manter eficiência      |
+| Comerciante | Garantir func.   | Operar na queda de luz |
 
 ## Proposta de Valor
 
@@ -193,12 +196,16 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 Estes são os protótipos de telas do sistema.
 
 INTERFACE DO SITE
-![Interface](![alt text](interface.png))
+(![alt text](api.jpg))
+
+(![alt text](front.jpg))
+
+(![alt text](z.jpg))
 
 ### User Flow
 
 FLUXO DE TELAS
-![fluxo de telas](![alt text](userflow.png))
+(![fluxo de telas](userflow.jpg))
 
 # Metodologia
 
@@ -255,118 +262,100 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 -Problemas na API
 -Bug em layout mobile
 
-# Solução Implementada
-
-Esta seção apresenta todos os detalhes da solução criada no projeto.
-
-## Vídeo do Projeto
-
-O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
-
-[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
 
 ## Funcionalidades
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+##### Funcionalidade 1 
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
-
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
-* **Instruções de acesso:**
-  * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![Cadastro de usuário](userflow.jpg)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+![Cadastro de Empresas](z.jpg)
 
+![Api google maps](api.jpg)
+
+![Detalhamento do projeto](front.jpg)
+
+> 
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "tipo": "morador",
+      "nome": "Maria Silva",
+      "email": "maria@email.com",
+      "senha": "$2a$10$hashedpassword",
+      "telefone": "31987654321",
+      "endereco": {
+        "cep": "30535-510",
+        "logradouro": "Rua A",
+        "numero": "100",
+        "complemento": "Casa 2"
+      },
+      "consumoMedio": 150,
+      "dataCadastro": "2023-11-15"
+    }
+  ],
+  "empresas": [
+    {
+      "id": 1,
+      "cnpj": "12.345.678/0001-90",
+      "razaoSocial": "Energia Solar Comunitária LTDA",
+      "nomeFantasia": "SolarFavela",
+      "especialidades": ["instalacao", "manutencao"],
+      "endereco": {
+        "cep": "30535-000",
+        "logradouro": "Av. B",
+        "numero": "200"
+      },
+      "contato": {
+        "telefone": "3133334444",
+        "email": "contato@solarfavela.com.br"
+      },
+      "avaliacao": 4.8,
+      "precoMedio": 2500,
+      "coordenadas": {
+        "lat": -19.9191,
+        "lng": -43.9387
+      }
+    }
+  ],
+  "simulacoes": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "data": "2023-11-15T10:30:00Z",
+      "consumoMensalKwh": 150,
+      "valorConta": 250.00,
+      "resultado": {
+        "economiaMensal": 175.00,
+        "paybackAnos": 3.5,
+        "placasRecomendadas": 4
+      },
+      "empresasSugeridas": [1]
+    }
+  ]
+}
 
-Contatos da aplicação
-
-```json
-  {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
-  }
-  
-```
-
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
-
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
-
-```json
-  {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
-  }
-```
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
-> **Orientações:**
->
-> * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
-> * [Trabalhando com JSON - Aprendendo desenvolvimento web | MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON)
-
-## Módulos e APIs
-
-Esta seção apresenta os módulos e APIs utilizados na solução
-
-**Images**:
-
-* Unsplash - [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️
-
-**Fonts:**
-
-* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️
-
-**Scripts:**
-
-* jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
-* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
 
 # Referências
 
-As referências utilizadas no trabalho foram:
-
-* SOBRENOME, Nome do autor. Título da obra. 8. ed. Cidade: Editora, 2000. 287 p ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
->
-> **Orientações**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
+ABSOLAR. Anuário Brasileiro de Energia Solar Fotovoltaica 2023. Associação Brasileira de Energia Solar Fotovoltaica, 2023. Disponível em: https://www.absolar.org.br/anuarios. 
+ANEEL. Resolução Normativa nº 1.000/2021. Agência Nacional de Energia Elétrica, 2021. Disponível em: https://www.aneel.gov.br/resolucoes. 
+IBGE. Pesquisa de Orçamentos Familiares 2017-2018. Instituto Brasileiro de Geografia e Estatística, 2023. 
+Disponível em: https://www.ibge.gov.br/estatisticas/sociais/rendimento-despesa-e-consumo/24786-pof-2017-2018.html. 
+IPCC. Climate Change 2022: Mitigation of Climate Change. Intergovernmental Panel on Climate Change, 2022. Disponível em: https://www.ipcc.ch/report/ar6/wg3/. 
+MINISTÉRIO DE MINAS E ENERGIA. Balanço Energético Nacional 2023. Brasília, 2023. 
+Disponível em: https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/balanco-energetico-nacional. 
+ONU BRASIL. ODS 7: Energia Acessível e Limpa. Nações Unidas Brasil,	2021. 
+Disponível em: https://brasil.un.org/pt-br/sdgs/7. 
+PNUD. Relatório de Desenvolvimento Humano 2020. Programa das Nações Unidas para o Desenvolvimento, 2020. Disponível em: https://www.br.undp.org/content/brazil/pt/home/library/idh/relatorios-de-desenvolvimento-humano.html. 
+SILVA, R. A.; SANTOS, M. B. Energia Solar em Comunidades de Baixa Renda: Estudo de Caso no Complexo do Alemão. Revista Brasileira de Energias Renováveis, v.10, n.2, p.45-60,		2021. 
+Disponível em: https://www.revistas.usp.br/rber/article/view/123456. 
