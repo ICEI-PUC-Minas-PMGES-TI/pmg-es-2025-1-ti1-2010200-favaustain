@@ -303,7 +303,9 @@ Descrição das estruturas de dados utilizadas na solução com exemplos no form
       "dataCadastro": "2023-11-15"
     }
   ],
-  "empresas": [
+  
+
+"empresas": [
     {
       "id": 1,
       "cnpj": "12.345.678/0001-90",
@@ -327,6 +329,8 @@ Descrição das estruturas de dados utilizadas na solução com exemplos no form
       }
     }
   ],
+
+
   "simulacoes": [
     {
       "id": 1,
@@ -343,7 +347,6 @@ Descrição das estruturas de dados utilizadas na solução com exemplos no form
     }
   ]
 }
-
 
 # Referências
 
