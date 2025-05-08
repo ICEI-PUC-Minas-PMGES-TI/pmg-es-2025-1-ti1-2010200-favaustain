@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Empresas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Parte 1: Cabeçalho com logotipos -->
+        <header class="header">
+            <div class="logos">
+                <div class="logo logo-1"></div>
+                <div class="logo logo-2"></div>
+                <div class="logo logo-3"></div>
+            </div>
+        </header>
+        
+        <!-- Parte 2: Seções de empresas -->
+        <main class="content">
+            <!-- Seção 1: Empresas recomendadas -->
+            <section class="empresas-section">
+                <h2>Empresas recomendadas</h2>
+                <div class="cards-container">
+                    <div class="card" data-empresa="Tech Co" data-categoria="recomendada">
+                        <a href="empresa-info.html?nome=Tech%20Co&categoria=recomendada" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Recomendada 1 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <circle cx="150" cy="60" r="30" fill="#2d7dd2" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#2d7dd2" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#97cc04" />
+                                  <text x="150" y="66" font-family="Arial" font-size="16" text-anchor="middle" fill="white">TECH CO</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Tech Co</h3>
+                                <p>Soluções tecnológicas inovadoras</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card" data-empresa="Finance" data-categoria="recomendada">
+                        <a href="empresa-info.html?nome=Finance&categoria=recomendada" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Recomendada 2 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <rect x="100" y="40" width="100" height="60" fill="#3f826d" />
+                                  <rect x="110" y="110" width="80" height="10" fill="#3f826d" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00e640" />
+                                  <text x="150" y="75" font-family="Arial" font-size="16" text-anchor="middle" fill="white">FINANCE</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Finance</h3>
+                                <p>Serviços financeiros de qualidade</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card" data-empresa="Design" data-categoria="recomendada">
+                        <a href="empresa-info.html?nome=Design&categoria=recomendada" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Recomendada 3 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <polygon points="150,30 180,80 120,80" fill="#474747" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#474747" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="72" font-family="Arial" font-size="12" text-anchor="middle" fill="white">DESIGN</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Design</h3>
+                                <p>Criatividade em cada projeto</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção 2: Novas no mercado -->
+            <section class="empresas-section">
+                <h2>Novas no mercado!</h2>
+                <div class="cards-container">
+                    <div class="card" data-empresa="Startup Inovadora" data-categoria="nova">
+                        <a href="empresa-info.html?nome=Startup%20Inovadora&categoria=nova" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Nova 1 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <circle cx="150" cy="60" r="30" fill="#ff6b6b" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#ff6b6b" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="65" font-family="Arial" font-size="14" text-anchor="middle" fill="white">STARTUP</text>
+                                  <text x="150" y="113" font-family="Arial" font-size="12" text-anchor="middle" fill="white">INOVADORA</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Startup Inovadora</h3>
+                                <p>Revolucionando o mercado</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card" data-empresa="Eco Tech" data-categoria="nova">
+                        <a href="empresa-info.html?nome=Eco%20Tech&categoria=nova" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Nova 2 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <rect x="90" y="40" width="120" height="40" rx="20" ry="20" fill="#4ecdc4" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#4ecdc4" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="65" font-family="Arial" font-size="14" text-anchor="middle" fill="white">ECO TECH</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Eco Tech</h3>
+                                <p>Tecnologia sustentável</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card" data-empresa="Energia" data-categoria="nova">
+                        <a href="empresa-info.html?nome=Energia&categoria=nova" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Nova 3 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <polygon points="120,30 180,30 150,80" fill="#f7b733" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#f7b733" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="113" font-family="Arial" font-size="14" text-anchor="middle" fill="white">ENERGIA</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Energia</h3>
+                                <p>Fontes renováveis para o futuro</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Seção 3: Pioneiras -->
+            <section class="empresas-section">
+                <h2>Pioneiras</h2>
+                <div class="cards-container">
+                    <div class="card" data-empresa="Indústria" data-categoria="pioneira">
+                        <a href="empresa-info.html?nome=Ind%C3%BAstria&categoria=pioneira" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Pioneira 1 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <rect x="110" y="40" width="80" height="40" fill="#424242" />
+                                  <circle cx="150" cy="60" r="15" fill="#00ff00" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#424242" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="113" font-family="Arial" font-size="14" text-anchor="middle" fill="white">INDÚSTRIA</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Indústria</h3>
+                                <p>Tradição e qualidade desde sempre</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card" data-empresa="Telecom" data-categoria="pioneira">
+                        <a href="empresa-info.html?nome=Telecom&categoria=pioneira" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Pioneira 2 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <rect x="90" y="40" width="120" height="40" fill="#5e35b1" />
+                                  <rect x="100" y="100" width="100" height="20" fill="#5e35b1" />
+                                  <rect x="120" y="130" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="65" font-family="Arial" font-size="14" text-anchor="middle" fill="white">TELECOM</text>
+                                  <text x="150" y="113" font-family="Arial" font-size="12" text-anchor="middle" fill="white">DESDE 1980</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Telecom</h3>
+                                <p>Conectando pessoas desde 1980</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card" data-empresa="Construtora Tradicional" data-categoria="pioneira">
+                        <a href="empresa-info.html?nome=Construtora%20Tradicional&categoria=pioneira" class="card-link">
+                            <div class="card-img">
+                                <!-- SVG embutido para Empresa Pioneira 3 -->
+                                <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="300" height="150" fill="#e9eef2" />
+                                  <path d="M120,40 L180,40 L180,80 L150,100 L120,80 Z" fill="#006064" />
+                                  <rect x="100" y="110" width="100" height="20" fill="#006064" />
+                                  <rect x="120" y="135" width="60" height="5" fill="#00ff00" />
+                                  <text x="150" y="65" font-family="Arial" font-size="14" text-anchor="middle" fill="white">CONSTRUTORA</text>
+                                  <text x="150" y="123" font-family="Arial" font-size="12" text-anchor="middle" fill="white">TRADICIONAL</text>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3>Construtora Tradicional</h3>
+                                <p>Construindo o futuro com solidez</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Parte 3: Rodapé (opcional) -->
+        <footer class="footer">
+            <p>&copy; 2025 - Plataforma de Empresas</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
