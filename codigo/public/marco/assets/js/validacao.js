@@ -13,8 +13,17 @@ document.getElementById('cep').addEventListener('input', function(e) {
 document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
-  const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
+  const nome = document.getElementById('nome').value.trim();
   const email = document.getElementById('email').value.trim();
+  const senha = document.getElementById('senha').value;
+  const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
+  const cep = document.getElementById('cep').value.replace(/\D/g, '');
+  const logradouro = document.getElementById('logradouro').value.trim();
+
+  if (!nome || !email || !senha || !cpf || !cep || !logradouro) {
+    alert('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
 
   if (!validarEmail(email)) {
     alert('E-mail inválido!');
@@ -26,7 +35,35 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     return;
   }
 
-  alert('Cadastro realizado com sucesso!');
+  const usuario = {
+    nome: nome,
+    email: email,
+    senha: senha, // Idealmente, a senha deve ser hasheada antes de ser enviada/salva
+    cpf: cpf,
+    cep: cep,
+    logradouro: logradouro
+  };
+
+  try {
+    const response = await fetch('http://localhost:3000/usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(usuario)
+    });
+
+    if (response.ok) {
+      alert('Cadastro realizado com sucesso!');
+      document.getElementById('cadastroForm').reset(); // Limpa o formulário
+    } else {
+      const errorData = await response.json();
+      alert('Erro ao realizar o cadastro: ' + (errorData.message || response.statusText));
+    }
+  } catch (error) {
+    console.error('Erro ao enviar dados para o servidor:', error);
+    alert('Erro ao conectar com o servidor. Tente novamente mais tarde.');
+  }
 });
 
 function validarEmail(email) {
@@ -47,3 +84,4 @@ function validarCPF(cpf) {
   if (resto === 10 || resto === 11) resto = 0;
   return resto === parseInt(cpf.charAt(10));
 }
+
