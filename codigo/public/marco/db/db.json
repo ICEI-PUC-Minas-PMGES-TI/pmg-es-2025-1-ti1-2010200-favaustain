@@ -1,0 +1,26 @@
+{
+  "usuarios": [
+    {
+      "id": "9419",
+      "nome": "Teste",
+      "email": "teste@teste.com",
+      "cpf": "12345678901",
+      "cep": "01001000",
+      "logradouro": "Rua Teste",
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "estado": "SP"
+    },
+    {
+      "id": "b279",
+      "nome": "dfasrfdsfdsf",
+      "email": "anonymousplayers54@gmail.com",
+      "cpf": "14047123641",
+      "cep": "30840040",
+      "logradouro": "Rua dos Comerciantes",
+      "bairro": "Alípio de Melo",
+      "cidade": "Belo Horizonte",
+      "estado": "MG"
+    }
+  ]
+}
