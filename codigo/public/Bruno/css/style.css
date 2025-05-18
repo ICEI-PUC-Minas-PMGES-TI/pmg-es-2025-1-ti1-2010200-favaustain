@@ -1,0 +1,153 @@
+/* Reset e base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    line-height: 1.6;
+    padding: 0 15px;
+  }
+  
+  /* Cabeçalho com logo */
+  header {
+    background-color: #000;
+    padding: 15px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(5, 187, 54, 0.2);
+  }
+  
+  header img {
+    height: 60px;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  header img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Título */
+  h1 {
+    color: #05bb36;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+  
+  /* Mapa */
+  #map {
+    height: 500px;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(5, 187, 54, 0.2);
+    margin-bottom: 20px;
+  }
+  
+  /* Painel de rotas */
+  #route-panel {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 0 8px rgba(5, 187, 54, 0.15);
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #05bb36 #2e2e2e;
+  }
+  
+  /* Campos de formulário */
+  select.form-select,
+  #searchBox {
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    padding: 10px 14px;
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  select.form-select:hover,
+  #searchBox:hover {
+    border-color: #05bb36;
+  }
+  
+  select.form-select:focus,
+  #searchBox:focus {
+    border-color: #05bb36;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(5, 187, 54, 0.3);
+  }
+  
+  /* Lista de parceiros */
+  #partner-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #1e1e1e;
+    padding: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #05bb36 #2e2e2e;
+  }
+  
+  .list-group-item {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    background-color: #2a2a2a;
+    color: #eee;
+    border: none;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .list-group-item:hover {
+    background-color: #05bb36;
+    color: #000;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Scrollbars customizados (para navegadores compatíveis) */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #05bb36;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #2e2e2e;
+  }
+  
+  /* Responsividade */
+  @media screen and (max-width: 768px) {
+    #map {
+      height: 400px;
+    }
+  
+    #route-panel {
+      max-height: none;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    header img {
+      height: 50px;
+    }
+  }
+  
