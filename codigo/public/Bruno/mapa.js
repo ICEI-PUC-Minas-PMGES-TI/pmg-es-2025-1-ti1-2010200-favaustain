@@ -1,90 +1,33 @@
-// mapa.js - Versão completa com balões e ícones personalizados
-// Adicione no início do arquivo mapa.js
-console.log("Script mapa.js carregado!");
+// mapa.js - Versão corrigida e otimizada
 
-function initMap() {
-  console.log("Função initMap chamada");
-  
-  try {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -19.9208, lng: -43.9378 },
-      zoom: 13,
-      styles: [/* seus estilos */]
-    });
-    console.log("Mapa inicializado com sucesso");
-
-    directionsService = new google.maps.DirectionsService();
-    directionsRenderer = new google.maps.DirectionsRenderer({
-      map: map,
-      panel: document.getElementById("route-panel"),
-      suppressMarkers: false
-    });
-
-    console.log("Empresas a serem exibidas:", empresas);
-    adicionarMarcadores(empresas);
-    atualizarListaParceiros(empresas);
-    aplicarEventosDeFiltro();
-    aplicarEventoCalculoRota();
-    
-  } catch (error) {
-    console.error("Erro ao inicializar mapa:", error);
-    alert("Erro ao carregar o mapa. Verifique o console para detalhes.");
-  }
-}
-
-function adicionarMarcadores(lista) {
-  console.log("Adicionando marcadores:", lista.length);
-  
-  // Limpa marcadores existentes
-  markers.forEach(marker => marker.setMap(null));
-  markers = [];
-
-  lista.forEach(empresa => {
-    console.log("Criando marcador para:", empresa.nome);
-    
-    const marker = new google.maps.Marker({
-      position: { lat: empresa.lat, lng: empresa.lng },
-      map: map,
-      title: empresa.nome,
-      icon: icons[empresa.categoria] || icons.default
-    });
-
-    const infowindow = new google.maps.InfoWindow({
-      content: `<b>${empresa.nome}</b><br>Categoria: ${empresa.categoria}<br>Tipo: ${empresa.tipo}`
-    });
-
-    marker.addListener("click", () => {
-      infowindow.open(map, marker);
-    });
-
-    markers.push(marker);
-  });
-}
+// Variáveis globais
 let map;
 let markers = [];
 let directionsService;
 let directionsRenderer;
 let infoWindows = [];
 
+// Configuração dos ícones
 const icons = {
   Solar: {
     url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
-    scaledSize: new google.maps.Size(40, 40)
+    scaledSize: new google.maps.Size(32, 32)
   },
   Eólica: {
     url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: new google.maps.Size(40, 40)
+    scaledSize: new google.maps.Size(32, 32)
   },
   Híbrida: {
     url: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
-    scaledSize: new google.maps.Size(40, 40)
+    scaledSize: new google.maps.Size(32, 32)
   },
   default: {
     url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
-    scaledSize: new google.maps.Size(40, 40)
+    scaledSize: new google.maps.Size(32, 32)
   }
 };
 
+// Dados das empresas
 const empresas = [
   { 
     nome: 'Eco Minas Energia', 
@@ -92,9 +35,8 @@ const empresas = [
     lng: -43.938, 
     categoria: 'Solar', 
     tipo: 'Instaladora',
-    endereco: 'Av. Afonso Pena, 1000',
-    telefone: '(31) 9999-9999',
-    descricao: 'Especializada em instalações residenciais de energia solar'
+    endereco: 'Av. Afonso Pena, 1000, Belo Horizonte - MG',
+    telefone: '(31) 9999-9999'
   },
   { 
     nome: 'Vívuz Solar', 
@@ -102,9 +44,8 @@ const empresas = [
     lng: -43.940, 
     categoria: 'Solar', 
     tipo: 'Distribuidora',
-    endereco: 'R. da Bahia, 200',
-    telefone: '(31) 8888-8888',
-    descricao: 'Distribuidora de equipamentos para energia solar'
+    endereco: 'R. da Bahia, 200, Belo Horizonte - MG',
+    telefone: '(31) 8888-8888'
   },
   { 
     nome: 'SunTech Solar', 
@@ -112,9 +53,8 @@ const empresas = [
     lng: -43.935, 
     categoria: 'Híbrida', 
     tipo: 'Consultoria',
-    endereco: 'Av. do Contorno, 300',
-    telefone: '(31) 7777-7777',
-    descricao: 'Consultoria em projetos de energia renovável'
+    endereco: 'Av. do Contorno, 300, Belo Horizonte - MG',
+    telefone: '(31) 7777-7777'
   },
   { 
     nome: 'Seg Energy BH', 
@@ -122,9 +62,8 @@ const empresas = [
     lng: -43.930, 
     categoria: 'Eólica', 
     tipo: 'Instaladora',
-    endereco: 'R. São Paulo, 400',
-    telefone: '(31) 6666-6666',
-    descricao: 'Instalação de turbinas eólicas residenciais'
+    endereco: 'R. São Paulo, 400, Belo Horizonte - MG',
+    telefone: '(31) 6666-6666'
   },
   { 
     nome: 'Nova Luz Solar', 
@@ -132,9 +71,8 @@ const empresas = [
     lng: -43.928, 
     categoria: 'Solar', 
     tipo: 'Engenharia',
-    endereco: 'Av. Amazonas, 500',
-    telefone: '(31) 5555-5555',
-    descricao: 'Engenharia especializada em energia solar'
+    endereco: 'Av. Amazonas, 500, Belo Horizonte - MG',
+    telefone: '(31) 5555-5555'
   },
   { 
     nome: 'BH Sustentável', 
@@ -142,14 +80,22 @@ const empresas = [
     lng: -43.943, 
     categoria: 'Híbrida', 
     tipo: 'Manutenção',
-    endereco: 'R. Tamoios, 600',
-    telefone: '(31) 4444-4444',
-    descricao: 'Manutenção de sistemas de energia renovável'
+    endereco: 'R. Tamoios, 600, Belo Horizonte - MG',
+    telefone: '(31) 4444-4444'
   }
 ];
 
+// Função principal de inicialização
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
+  // Verifica se o elemento do mapa existe
+  const mapElement = document.getElementById("map");
+  if (!mapElement) {
+    console.error("Elemento #map não encontrado no DOM");
+    return;
+  }
+
+  // Cria o mapa
+  map = new google.maps.Map(mapElement, {
     center: { lat: -19.9208, lng: -43.9378 },
     zoom: 13,
     styles: [
@@ -176,6 +122,7 @@ function initMap() {
     ]
   });
 
+  // Inicializa serviços de rota
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer({
     map: map,
@@ -183,13 +130,18 @@ function initMap() {
     suppressMarkers: false
   });
 
+  // Adiciona marcadores e configura eventos
   adicionarMarcadores(empresas);
   atualizarListaParceiros(empresas);
   aplicarEventosDeFiltro();
   aplicarEventoCalculoRota();
+
+  console.log("Mapa inicializado com sucesso");
 }
 
+// Adiciona marcadores no mapa
 function adicionarMarcadores(lista) {
+  // Limpa marcadores e infoWindows existentes
   markers.forEach(marker => marker.setMap(null));
   infoWindows.forEach(iw => iw.close());
   markers = [];
@@ -204,15 +156,14 @@ function adicionarMarcadores(lista) {
     });
 
     const contentString = `
-      <div style="padding:10px;max-width:250px">
-        <h5 style="margin:0 0 10px 0;color:#28a745">${empresa.nome}</h5>
-        <p style="margin:5px 0"><strong>Categoria:</strong> ${empresa.categoria}</p>
-        <p style="margin:5px 0"><strong>Tipo:</strong> ${empresa.tipo}</p>
-        <p style="margin:5px 0"><strong>Endereço:</strong> ${empresa.endereco}</p>
-        <p style="margin:5px 0"><strong>Telefone:</strong> ${empresa.telefone}</p>
-        <p style="margin:5px 0"><strong>Descrição:</strong> ${empresa.descricao}</p>
-        <button onclick="window.calcularRotaParaEmpresa(${empresa.lat},${empresa.lng})" 
-                style="background:#28a745;color:white;border:none;padding:5px 10px;border-radius:3px;cursor:pointer;margin-top:5px">
+      <div style="padding: 10px; max-width: 250px;">
+        <h5 style="margin-top: 0; color: #28a745;">${empresa.nome}</h5>
+        <p><strong>Categoria:</strong> ${empresa.categoria}</p>
+        <p><strong>Tipo:</strong> ${empresa.tipo}</p>
+        <p><strong>Endereço:</strong> ${empresa.endereco}</p>
+        <p><strong>Telefone:</strong> ${empresa.telefone}</p>
+        <button onclick="window.calcularRotaParaEmpresa(${empresa.lat}, ${empresa.lng})" 
+                style="background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; margin-top: 8px;">
           <i class="bi bi-geo-alt"></i> Traçar rota
         </button>
       </div>
@@ -232,12 +183,14 @@ function adicionarMarcadores(lista) {
   });
 }
 
+// Função global para cálculo de rota
 window.calcularRotaParaEmpresa = function(lat, lng) {
   const origem = getLocalizacaoAtual();
   const destino = { lat, lng };
   calcularERenderizarRota(origem, destino);
 };
 
+// Atualiza a lista de empresas no painel lateral
 function atualizarListaParceiros(lista) {
   const ul = document.getElementById("partner-list");
   ul.innerHTML = "";
@@ -254,8 +207,11 @@ function atualizarListaParceiros(lista) {
     `;
     
     li.addEventListener("click", () => {
+      // Centraliza o mapa no marcador
       map.setCenter({ lat: empresa.lat, lng: empresa.lng });
       map.setZoom(15);
+      
+      // Abre o infoWindow correspondente
       infoWindows.forEach(iw => iw.close());
       infoWindows[index].open(map, markers[index]);
     });
@@ -264,12 +220,14 @@ function atualizarListaParceiros(lista) {
   });
 }
 
+// Configura eventos de filtro
 function aplicarEventosDeFiltro() {
   document.getElementById("searchBox").addEventListener("input", aplicarFiltros);
   document.getElementById("filtroCategoria").addEventListener("change", aplicarFiltros);
   document.getElementById("filtroTipo").addEventListener("change", aplicarFiltros);
 }
 
+// Aplica os filtros na lista de empresas
 function aplicarFiltros() {
   const busca = document.getElementById("searchBox").value.toLowerCase();
   const categoria = document.getElementById("filtroCategoria").value;
@@ -285,6 +243,7 @@ function aplicarFiltros() {
   atualizarListaParceiros(filtradas);
 }
 
+// Calcula e exibe uma rota
 function calcularERenderizarRota(origem, destino) {
   directionsService.route({
     origin: origem,
@@ -302,6 +261,7 @@ function calcularERenderizarRota(origem, destino) {
   });
 }
 
+// Configura evento para cálculo de rota manual
 function aplicarEventoCalculoRota() {
   document.getElementById("calculate-route").addEventListener("click", () => {
     const origemInput = document.getElementById("origem-input").value;
@@ -316,6 +276,14 @@ function aplicarEventoCalculoRota() {
   });
 }
 
+// Retorna a localização atual (simulada)
 function getLocalizacaoAtual() {
-  return { lat: -19.9227, lng: -43.9451 };
+  return { lat: -19.9227, lng: -43.9451 }; // Pode ser substituído por geolocalização real
+}
+
+// Inicializa o mapa quando a API do Google Maps estiver carregada
+if (typeof google !== 'undefined') {
+  initMap();
+} else {
+  console.error("API do Google Maps não carregada");
 }
