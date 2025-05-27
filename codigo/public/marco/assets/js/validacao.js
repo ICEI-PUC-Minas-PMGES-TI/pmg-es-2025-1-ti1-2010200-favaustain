@@ -1,77 +1,88 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("formulario");
+function aplicarMascaraCPF(valor) {
+  valor = valor.replace(/\D/g, "").substring(0, 11);
+  return valor
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+}
 
-  document.getElementById("cpf").addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/\D/g, "");
-  });
+function aplicarMascaraCEP(valor) {
+  valor = valor.replace(/\D/g, "").substring(0, 8);
+  return valor.replace(/(\d{5})(\d{1,3})$/, "$1-$2");
+}
 
-  document.getElementById("cep").addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/\D/g, "");
-  });
+function limparMascara(valor) {
+  return valor.replace(/\D/g, "");
+}
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+const form = document.getElementById("formulario");
 
-    const usuario = {
-      nome: form.nome.value.trim(),
-      email: form.email.value.trim(),
-      cpf: form.cpf.value.trim(),
-      cep: form.cep.value.trim(),
-      logradouro: form.logradouro.value.trim(),
-      bairro: form.bairro.value.trim(),
-      cidade: form.cidade.value.trim(),
-      estado: form.estado.value.trim(),
-    };
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    if (!validarCPF(usuario.cpf)) {
-      alert("CPF inválido.");
-      return;
-    }
+  const nome = form.nome.value.trim();
+  const email = form.email.value.trim();
+  const senha = form.senha.value.trim();
+  const cpf = limparMascara(form.cpf.value);
+  const cep = limparMascara(form.cep.value);
+  const logradouro = form.logradouro.value.trim();
+  const bairro = form.bairro.value.trim();
+  const cidade = form.cidade.value.trim();
+  const estado = form.estado.value.trim();
 
-    if (usuario.cep.length !== 8) {
-      alert("CEP inválido.");
-      return;
-    }
+  if (
+    !nome || !email || !senha || !cpf || !cep ||
+    !logradouro || !bairro || !cidade || !estado
+  ) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
 
-    fetch("http://localhost:3000/usuarios", {
+  if (cpf.length !== 11) {
+    alert("CPF inválido.");
+    return;
+  }
+
+  if (cep.length !== 8) {
+    alert("CEP inválido.");
+    return;
+  }
+
+  const novoUsuario = {
+    nome,
+    email,
+    senha,
+    cpf,
+    cep,
+    logradouro,
+    bairro,
+    cidade,
+    estado
+  };
+
+  try {
+    const resposta = await fetch("http://localhost:3000/usuarios", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(usuario)
-    })
-      .then(res => {
-        if (res.ok) {
-          alert("Usuário cadastrado com sucesso!");
-          form.reset();
-        } else {
-          alert("Erro ao cadastrar usuário.");
-        }
-      })
-      .catch(err => {
-        alert("Erro na requisição.");
-        console.error(err);
-      });
-  });
+      body: JSON.stringify(novoUsuario)
+    });
 
-  function validarCPF(cpf) {
-    cpf = cpf.replace(/\D/g, "");
-    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+    if (!resposta.ok) throw new Error("Erro ao salvar");
 
-    let soma = 0;
-    for (let i = 0; i < 9; i++) {
-      soma += parseInt(cpf.charAt(i)) * (10 - i);
-    }
-    let dig1 = 11 - (soma % 11);
-    dig1 = dig1 >= 10 ? 0 : dig1;
-
-    soma = 0;
-    for (let i = 0; i < 10; i++) {
-      soma += parseInt(cpf.charAt(i)) * (11 - i);
-    }
-    let dig2 = 11 - (soma % 11);
-    dig2 = dig2 >= 10 ? 0 : dig2;
-
-    return dig1 === parseInt(cpf.charAt(9)) && dig2 === parseInt(cpf.charAt(10));
+    alert("Cadastro realizado com sucesso!");
+    form.reset();
+  } catch (erro) {
+    console.error("Erro ao salvar dados:", erro);
+    alert("Erro ao salvar dados.");
   }
+});
+
+document.getElementById("cpf").addEventListener("input", (e) => {
+  e.target.value = aplicarMascaraCPF(e.target.value);
+});
+
+document.getElementById("cep").addEventListener("input", (e) => {
+  e.target.value = aplicarMascaraCEP(e.target.value);
 });
