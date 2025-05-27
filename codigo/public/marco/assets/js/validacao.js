@@ -1,9 +1,8 @@
 function aplicarMascaraCPF(valor) {
   valor = valor.replace(/\D/g, "").substring(0, 11);
-  return valor
-    .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+  return valor.replace(/(\d{3})(\d)/, "$1.$2")
+              .replace(/(\d{3})(\d)/, "$1.$2")
+              .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
 }
 
 function aplicarMascaraCEP(valor) {
@@ -30,21 +29,13 @@ form.addEventListener("submit", async function (e) {
   const cidade = form.cidade.value.trim();
   const estado = form.estado.value.trim();
 
-  if (
-    !nome || !email || !senha || !cpf || !cep ||
-    !logradouro || !bairro || !cidade || !estado
-  ) {
+  if (!nome || !email || !senha || !cpf || !cep || !logradouro || !bairro || !cidade || !estado) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
 
-  if (cpf.length !== 11) {
-    alert("CPF inválido.");
-    return;
-  }
-
-  if (cep.length !== 8) {
-    alert("CEP inválido.");
+  if (cpf.length !== 11 || cep.length !== 8) {
+    alert("CPF ou CEP inválido.");
     return;
   }
 
@@ -63,26 +54,23 @@ form.addEventListener("submit", async function (e) {
   try {
     const resposta = await fetch("http://localhost:3000/usuarios", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoUsuario)
     });
 
-    if (!resposta.ok) throw new Error("Erro ao salvar");
+    if (!resposta.ok) throw new Error();
 
     alert("Cadastro realizado com sucesso!");
     form.reset();
-  } catch (erro) {
-    console.error("Erro ao salvar dados:", erro);
+  } catch {
     alert("Erro ao salvar dados.");
   }
 });
 
-document.getElementById("cpf").addEventListener("input", (e) => {
+document.getElementById("cpf").addEventListener("input", e => {
   e.target.value = aplicarMascaraCPF(e.target.value);
 });
 
-document.getElementById("cep").addEventListener("input", (e) => {
+document.getElementById("cep").addEventListener("input", e => {
   e.target.value = aplicarMascaraCEP(e.target.value);
 });

@@ -45,6 +45,18 @@
       "bairro": "Alípio de Melo",
       "cidade": "Belo Horizonte",
       "estado": "MG"
+    },
+    {
+      "nome": "TESTE",
+      "email": "TESTE@gmail.com",
+      "senha": "TESTE123",
+      "cpf": "14047123641",
+      "cep": "30840040",
+      "logradouro": "Rua dos Comerciantes",
+      "bairro": "Alípio de Melo",
+      "cidade": "Belo Horizonte",
+      "estado": "SP",
+      "id": "DFz5JY5"
     }
   ]
 }
