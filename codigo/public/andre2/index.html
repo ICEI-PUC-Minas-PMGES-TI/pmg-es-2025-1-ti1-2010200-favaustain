@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Cadastro de Empresa</h1>
+            
+            <form id="cadastroForm">
+                <div class="form-group">
+                    <label for="nome">Nome da Empresa</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome da empresa" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" name="descricao" placeholder="Breve descrição da empresa" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="recomendada">Empresa Recomendada</option>
+                            <option value="nova">Nova no Mercado</option>
+                            <option value="pioneira">Empresa Pioneira</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="site">Website</label>
+                        <input type="url" id="site" name="site" placeholder="https://exemplo.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="servicos">Serviços Oferecidos</label>
+                    <textarea id="servicos" name="servicos" placeholder="Digite os serviços separados por vírgula" required></textarea>
+                    <div class="services-container" id="servicesPreview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email de Contato</label>
+                    <input type="email" id="email" name="email" placeholder="contato@empresa.com" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="+55 11 99999-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" id="endereco" name="endereco" placeholder="Rua, número - Cidade, Estado" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="historico">Histórico da Empresa</label>
+                    <textarea id="historico" name="historico" placeholder="Conte a história da empresa, quando foi fundada, principais marcos..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Cadastrar Empresa</button>
+                <a href="index.html" class="btn-secondary">Voltar para Lista</a>
+            </form>
+        </div>
+
+        <div class="image-section">
+            <div class="logos">
+                <div class="logo logo-1"></div>
+                <div class="logo logo-2"></div>
+                <div class="logo logo-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
