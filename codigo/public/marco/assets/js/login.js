@@ -1,29 +1,19 @@
-document.getElementById("loginForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const email = e.target.email.value.trim();
-  const senha = e.target.senha.value.trim();
-
-  if (!email || !senha) {
-    alert("Preencha todos os campos.");
-    return;
-  }
-
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
+  e.preventDefault()
+  const login = document.getElementById('login').value
+  const senha = document.getElementById('senha').value
+  const mensagemErro = document.getElementById('mensagem-erro')
   try {
-    const resposta = await fetch("http://localhost:3000/usuarios");
-    const usuarios = await resposta.json();
-
-    const usuarioValido = usuarios.find(
-      u => u.email === email && u.senha === senha
-    );
-
-    if (usuarioValido) {
-      alert("Login realizado com sucesso!");
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioValido));
+    const resposta = await fetch('http://localhost:3000/usuarios')
+    const usuarios = await resposta.json()
+    const usuarioEncontrado = usuarios.find(u => u.login === login && u.senha === senha)
+    if (usuarioEncontrado) {
+      localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado))
+      window.location.href = 'index.html'
     } else {
-      alert("Email ou senha incorretos.");
+      mensagemErro.textContent = 'Login ou senha inválidos.'
     }
-  } catch {
-    alert("Erro ao tentar fazer login.");
+  } catch (erro) {
+    mensagemErro.textContent = 'Erro ao conectar com o servidor.'
   }
-});
+})

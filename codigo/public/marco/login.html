@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
-  <link rel="stylesheet" href="assets/css/form.css" />
-  <script src="assets/js/login.js" defer></script>
+  <link rel="stylesheet" href="assets/css/form.css">
+  <link rel="shortcut icon" href="assets/img/fav.jpeg" type="image/x-icon">
 </head>
 <body>
   <header>
-    <img src="assets/img/fav.jpeg" alt="Logo FavSustein" class="logo" />
+    <img src="assets/img/fav.jpeg" alt="Logo" class="logo">
   </header>
-
   <main>
-    <section class="container">
-      <form id="loginForm">
-        <h1>Login</h1>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required />
-
+    <div class="form-container">
+      <form id="loginForm" class="form-box">
+        <h2>Login</h2>
+        <label for="login">Usuário</label>
+        <input type="text" id="login" name="login" required>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
         <button type="submit">Entrar</button>
+        <p id="mensagem-erro" class="erro"></p>
+        <a href="cadastro.html">Ainda não tem uma conta? Cadastre-se</a>
       </form>
-    </section>
+    </div>
   </main>
+  <script src="assets/js/login.js"></script>
 </body>
 </html>

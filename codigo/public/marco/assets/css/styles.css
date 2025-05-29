@@ -11,14 +11,13 @@ body {
 header {
   width: 100%;
   padding: 10px 20px;
-  background-color: #fff;
-  border-bottom: 2px solid #ffffff;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
 }
 
 .logo {
-  height: 150px;
+  height: 40px;
   width: auto;
 }
 
@@ -28,4 +27,37 @@ main {
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+
+h1, h2 {
+  color: #000000;
+}
+
+label {
+  color: #000;
+  font-weight: 500;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
