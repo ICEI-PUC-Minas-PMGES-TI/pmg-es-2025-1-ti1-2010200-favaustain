@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfil</title>
+  <link rel="stylesheet" href="assets/css/form.css">
+  <link rel="shortcut icon" href="assets/img/fav.jpeg" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <img src="assets/img/fav.jpeg" alt="Logo" class="logo">
+  </header>
+  <main>
+    <div class="form-container">
+      <form id="perfilForm" class="form-box">
+        <h2>Meu Perfil</h2>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" name="cpf" required>
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" name="cep" required>
+        <label for="logradouro">Logradouro</label>
+        <input type="text" id="logradouro" name="logradouro" required>
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" name="bairro" required>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" required>
+        <label for="estado">Estado</label>
+        <input type="text" id="estado" name="estado" required>
+        <button type="submit">Salvar Alterações</button>
+        <button type="button" id="excluirConta" style="background-color: red; color: white;">Excluir Conta</button>
+      </form>
+    </div>
+  </main>
+  <script src="assets/js/perfil.js"></script>
+</body>
+</html>
