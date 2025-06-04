@@ -62,6 +62,7 @@ form.addEventListener("submit", async function (e) {
 
     alert("Cadastro realizado com sucesso!");
     form.reset();
+    window.location.href = "login.html";
   } catch {
     alert("Erro ao salvar dados.");
   }
