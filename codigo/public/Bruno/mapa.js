@@ -286,4 +286,5 @@ if (typeof google !== 'undefined') {
   initMap();
 } else {
   console.error("API do Google Maps não carregada");
-}
+}// Garante que a função initMap seja global
+window.initMap = initMap;
