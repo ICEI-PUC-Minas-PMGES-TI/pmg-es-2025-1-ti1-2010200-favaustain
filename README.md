@@ -5,7 +5,6 @@
 * André Luiz figueiredo Rosa
 * Bruno da Silva de Paulo
 * Marco Túlio Sales de Deus
-* João Marcelo sposito
 
 ## Professores responsáveis
 
