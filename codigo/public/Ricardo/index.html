@@ -1,0 +1,46 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Economia de Energia</title>
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Economia de Energia</h1>
+    <form id="calc-form">
+      <div>
+        <label for="consumo">Consumo atual (kWh/mês)</label>
+        <input type="number" id="consumo" min="0" required />
+      </div>
+      <div>
+        <label for="tarifa">Selecione sua região/tarifa (R$/kWh)</label>
+        <select id="tarifa" required>
+          <option value="">Selecione</option>
+          <option value="0.6">Sudeste - R$0,60</option>
+          <option value="0.55">Sul - R$0,55</option>
+          <option value="0.65">Nordeste - R$0,65</option>
+          <option value="0.7">Norte - R$0,70</option>
+          <option value="0.58">Centro-Oeste - R$0,58</option>
+        </select>
+      </div>
+      <div>
+        <label for="economia">% de economia esperada</label>
+        <input type="number" id="economia" min="0" max="100" placeholder="Ex: 30" required />
+      </div>
+      <button type="submit">Calcular</button>
+      <button type="button" id="verHistorico">Ver Histórico</button>
+    <div id="historico"></div>
+
+    </form>
+    <div id="resultado"></div>
+    <canvas id="grafico"></canvas>
+  </div>
+
+  <!-- JavaScript externo -->
+  <script src="main.js"></script>
+</body>
+</html>
