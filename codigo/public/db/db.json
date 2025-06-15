@@ -1,0 +1,72 @@
+{
+  "usuarios": [
+    {
+      "id": "",
+      "nome": "",
+      "email": "",
+      "senha": "",
+      "cpf": "",
+      "endereco": {
+        "cep": "",
+        "logradouro": "",
+        "bairro": "",
+        "cidade": "",
+        "estado": ""
+      },
+      "dataCadastro": "",
+      "ultimoAcesso": ""
+    }
+  ],
+  "empresas": [
+    {
+      "id": "",
+      "nome": "",
+      "descricao": "",
+      "categoria": "",
+      "tipo": "",
+      "servicos": [],
+      "contato": {
+        "email": "",
+        "telefone": "",
+        "site": ""
+      },
+      "endereco": {
+        "logradouro": "",
+        "numero": "",
+        "bairro": "",
+        "cidade": "",
+        "estado": "",
+        "cep": "",
+        "coordenadas": {
+          "latitude": 0,
+          "longitude": 0
+        }
+      },
+      "historico": "",
+      "dataCadastro": "",
+      "status": "ativo"
+    }
+  ],
+  "calculos": [
+    {
+      "id": "",
+      "usuarioId": "",
+      "data": "",
+      "consumo": {
+        "atual": 0,
+        "tarifa": 0,
+        "regiao": "",
+        "economiaEsperada": 0,
+        "economiaCalculada": 0
+      },
+      "resultados": {
+        "economiaAnual": 0,
+        "reducaoCO2": 0
+      }
+    }
+  ],
+  "metadata": {
+    "ultimaAtualizacao": "",
+    "versao": "1.0"
+  }
+}

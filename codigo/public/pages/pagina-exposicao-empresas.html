@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas - Favsustein</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="shortcut icon" href="../assets/img/fav.jpeg" type="image/x-icon">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container" onclick="window.location.href='../index.html'">
+        <img src="../assets/img/fav.jpeg" alt="Favsustein Logo" class="logo">
+        <h1 class="site-title">Favsustein</h1>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="pagina-exposicao-empresas.html" class="nav-link">Empresas</a></li>
+          <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+          <li><a href="calculo-gastos.html" class="nav-link">Calculadora</a></li>
+          <li><a href="cadastro-empresas.html" class="nav-link">Cadastrar Empresa</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="cadastro.html" class="btn btn-primary">Cadastrar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="empresas-section">
+        <h2 class="section-title">Empresas Parceiras</h2>
+        <p class="text-center mb-4">Conheça as empresas especializadas em economia de energia na sua região</p>
+      </section>
+
+      <section id="empresas-recomendadas" class="empresas-section">
+        <h3>Empresas Recomendadas</h3>
+        <div class="cards-container" id="recomendadas"></div>
+      </section>
+
+      <section id="empresas-novas" class="empresas-section">
+        <h3>Novas no Mercado!</h3>
+        <div class="cards-container" id="novas"></div>
+      </section>
+
+      <section id="empresas-pioneiras" class="empresas-section">
+        <h3>Pioneiras</h3>
+        <div class="cards-container" id="pioneiras"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Favsustein</h4>
+          <p>Conectando periferia com economia de energia.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="pagina-exposicao-empresas.html">Empresas</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li><a href="calculo-gastos.html">Calculadora</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Para Empresas</h4>
+          <ul>
+            <li><a href="cadastro-empresas.html">Cadastrar Empresa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Favsustein. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/modules/companies.js"></script>
+</body>
+</html>
+

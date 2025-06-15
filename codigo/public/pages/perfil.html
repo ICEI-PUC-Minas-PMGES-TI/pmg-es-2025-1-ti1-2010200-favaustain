@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Perfil - Favsustein</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="shortcut icon" href="../assets/img/fav.jpeg" type="image/x-icon">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container" onclick="window.location.href='../index.html'">
+        <img src="../assets/img/fav.jpeg" alt="Favsustein Logo" class="logo">
+        <h1 class="site-title">Favsustein</h1>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="pagina-exposicao-empresas.html" class="nav-link">Empresas</a></li>
+          <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+          <li><a href="calculo-gastos.html" class="nav-link">Calculadora</a></li>
+          <li><a href="cadastro-empresas.html" class="nav-link">Cadastrar Empresa</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="perfil.html" class="btn btn-outline">Perfil</a>
+        <button id="logoutButton" class="btn btn-primary">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="form-container">
+        <form id="perfilForm" class="form-box">
+          <h2>Meu Perfil</h2>
+          <p id="mensagem-geral" class="mensagem"></p>
+
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" required autocomplete="name">
+          <span class="erro-mensagem" data-input="nome"></span>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+          <span class="erro-mensagem" data-input="email"></span>
+
+          <label for="senha">Nova Senha</label>
+          <input type="password" id="senha" name="senha" autocomplete="new-password" placeholder="Deixe em branco para manter a senha atual">
+          <span class="erro-mensagem" data-input="senha"></span>
+
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" required autocomplete="off">
+          <span class="erro-mensagem" data-input="cpf"></span>
+
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" name="cep" required autocomplete="postal-code">
+          <span class="erro-mensagem" data-input="cep"></span>
+
+          <label for="logradouro">Logradouro</label>
+          <input type="text" id="logradouro" name="logradouro" required autocomplete="address-line1">
+          <span class="erro-mensagem" data-input="logradouro"></span>
+
+          <label for="bairro">Bairro</label>
+          <input type="text" id="bairro" name="bairro" required autocomplete="address-level2">
+          <span class="erro-mensagem" data-input="bairro"></span>
+
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" name="cidade" required autocomplete="address-level2">
+          <span class="erro-mensagem" data-input="cidade"></span>
+
+          <label for="estado">Estado</label>
+          <input type="text" id="estado" name="estado" required autocomplete="address-level1">
+          <span class="erro-mensagem" data-input="estado"></span>
+
+          <button type="submit" id="btnSalvar" class="btn btn-primary">Salvar Alterações</button>
+          
+          <div class="mt-3">
+            <button type="button" class="btn" style="background-color: #dc3545; color: white;" id="excluirConta">Excluir Conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Favsustein</h4>
+          <p>Conectando periferia com economia de energia.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="pagina-exposicao-empresas.html">Empresas</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li><a href="calculo-gastos.html">Calculadora</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Para Empresas</h4>
+          <ul>
+            <li><a href="cadastro-empresas.html">Cadastrar Empresa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Favsustein. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/modules/utils.js"></script>
+  <script type="module" src="../assets/js/modules/cep.js"></script>
+  <script type="module" src="../assets/js/modules/profile.js"></script>
+</body>
+</html>
+

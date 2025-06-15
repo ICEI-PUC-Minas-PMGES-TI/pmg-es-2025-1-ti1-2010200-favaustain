@@ -1,30 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/login.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós - Favsustein</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="shortcut icon" href="assets/img/fav.jpeg" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="banner"><img src="./assets/images/banner_ti.png" alt=""></div>
-        <div class="barra-info">
-            <nav class="menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">Sobre nós</a></li>
-                </ul>
-            </nav>
-            <div class="dados-usuario">
-                <span id="userInfo"></span>
-            </div>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container" onclick="window.location.href='index.html'">
+        <img src="assets/img/fav.jpeg" alt="Favsustein Logo" class="logo">
+        <h1 class="site-title">Favsustein</h1>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="pages/pagina-exposicao-empresas.html" class="nav-link">Empresas</a></li>
+          <li><a href="pages/mapa.html" class="nav-link">Mapa</a></li>
+          <li><a href="pages/calculo-gastos.html" class="nav-link">Calculadora</a></li>
+          <li><a href="pages/cadastro-empresas.html" class="nav-link">Cadastrar Empresa</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="pages/login.html" class="btn btn-outline">Login</a>
+        <a href="pages/cadastro.html" class="btn btn-primary">Cadastrar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <h2 class="hero-title">Sobre o Favsustein</h2>
+            <p class="hero-description">
+              Conectando comunidades periféricas com soluções sustentáveis de energia
+            </p>
+          </div>
         </div>
-    </header>
-    <main>
-        <h1>Sobre nós</h1>
-        <p>Página com informações sobre o site.</p>
-    </main>
+      </section>
+
+      <section class="about-content">
+        <div class="about-section">
+          <h3>🎯 Nosso Objetivo</h3>
+          <p>
+            O Favsustein nasceu com a missão de democratizar o acesso à economia de energia nas comunidades periféricas do Brasil. 
+            Nosso objetivo é conectar moradores de periferia com empresas especializadas em soluções de energia renovável e 
+            eficiência energética, oferecendo ferramentas práticas para calcular gastos, identificar oportunidades de economia 
+            e encontrar fornecedores confiáveis em suas regiões.
+          </p>
+          <p>
+            Acreditamos que todos têm o direito de reduzir seus custos com energia elétrica e contribuir para um futuro mais 
+            sustentável, independentemente de sua localização ou condição socioeconômica.
+          </p>
+        </div>
+
+        <div class="about-section">
+          <h3>💡 Nossa Causa</h3>
+          <p>
+            A energia elétrica representa uma parcela significativa do orçamento familiar, especialmente nas comunidades 
+            periféricas onde o acesso à informação sobre alternativas energéticas é limitado. Muitas famílias gastam mais 
+            do que precisariam com energia, simplesmente por não conhecerem as opções disponíveis ou não saberem como 
+            calcular o potencial de economia.
+          </p>
+          <p>
+            Nossa causa é combater essa desigualdade informacional, fornecendo uma plataforma acessível que:
+          </p>
+          <ul>
+            <li>Calcula o potencial de economia energética de forma simples e gratuita</li>
+            <li>Conecta usuários com empresas especializadas em sua região</li>
+            <li>Promove a sustentabilidade ambiental através da adoção de energias renováveis</li>
+            <li>Contribui para a redução dos custos familiares com energia elétrica</li>
+            <li>Facilita o acesso a tecnologias de eficiência energética</li>
+          </ul>
+        </div>
+
+        <div class="about-section">
+          <h3>👥 Nossa Equipe</h3>
+          <p>
+            O Favsustein foi desenvolvido por uma equipe de estudantes de Engenharia de Software da PUC Minas, 
+            unidos pela paixão por tecnologia e pelo desejo de criar soluções que impactem positivamente a sociedade.
+          </p>
+          
+          <div class="team-grid">
+            <div class="team-member">
+              <h4>Marco Túlio</h4>
+              <p>Estudante de Engenharia de Software - PUC Minas</p>
+              <p>Especialista em desenvolvimento frontend e experiência do usuário</p>
+            </div>
+            
+            <div class="team-member">
+              <h4>Ricardo Santana Kill</h4>
+              <p>Estudante de Engenharia de Software - PUC Minas</p>
+              <p>Focado em arquitetura de sistemas e desenvolvimento backend</p>
+            </div>
+            
+            <div class="team-member">
+              <h4>André Luiz Figueiredo Rosa</h4>
+              <p>Estudante de Engenharia de Software - PUC Minas</p>
+              <p>Especialista em banco de dados e integração de sistemas</p>
+            </div>
+            
+            <div class="team-member">
+              <h4>Bruno da Silva de Paulo</h4>
+              <p>Estudante de Engenharia de Software - PUC Minas</p>
+              <p>Focado em qualidade de software e metodologias ágeis</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h3>🌱 Impacto Social e Ambiental</h3>
+          <p>
+            Através do Favsustein, buscamos gerar um impacto positivo tanto social quanto ambiental:
+          </p>
+          <div class="impact-grid">
+            <div class="impact-item">
+              <h4>💰 Impacto Econômico</h4>
+              <p>Redução dos gastos familiares com energia elétrica, liberando recursos para outras necessidades básicas.</p>
+            </div>
+            <div class="impact-item">
+              <h4>🌍 Impacto Ambiental</h4>
+              <p>Promoção do uso de energias renováveis e redução da pegada de carbono das comunidades.</p>
+            </div>
+            <div class="impact-item">
+              <h4>📚 Impacto Educacional</h4>
+              <p>Conscientização sobre eficiência energética e sustentabilidade ambiental.</p>
+            </div>
+            <div class="impact-item">
+              <h4>🤝 Impacto Social</h4>
+              <p>Fortalecimento da economia local através da conexão com empresas da região.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-section">
+          <h3>🚀 Visão de Futuro</h3>
+          <p>
+            Nosso sonho é ver o Favsustein se tornando a principal referência em economia de energia para comunidades 
+            periféricas em todo o Brasil. Queremos expandir nossa plataforma para incluir mais funcionalidades, 
+            como simuladores de financiamento para energia solar, parcerias com instituições financeiras para 
+            facilitar o acesso ao crédito, e programas educacionais sobre sustentabilidade.
+          </p>
+          <p>
+            Acreditamos que a tecnologia pode ser uma ferramenta poderosa para reduzir desigualdades e promover 
+            um futuro mais sustentável para todos.
+          </p>
+        </div>
+
+        <div class="cta-section">
+          <h3>Junte-se a nós!</h3>
+          <p>
+            Seja você um morador de periferia buscando economizar na conta de luz, ou uma empresa que oferece 
+            soluções de energia sustentável, o Favsustein é o lugar certo para você.
+          </p>
+          <div class="cta-buttons">
+            <a href="pages/cadastro.html" class="btn btn-primary btn-large">Cadastre-se como Usuário</a>
+            <a href="pages/cadastro-empresas.html" class="btn btn-outline btn-large">Cadastre sua Empresa</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Favsustein</h4>
+          <p>Conectando periferia com economia de energia.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="pages/pagina-exposicao-empresas.html">Empresas</a></li>
+            <li><a href="pages/mapa.html">Mapa</a></li>
+            <li><a href="pages/calculo-gastos.html">Calculadora</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Para Empresas</h4>
+          <ul>
+            <li><a href="pages/cadastro-empresas.html">Cadastrar Empresa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Favsustein. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+
+  <style>
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .about-section {
+      margin-bottom: 3rem;
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .about-section h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .about-section p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .about-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-section li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .team-member h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .team-member p {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .impact-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .impact-item h4 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .impact-item p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color), #2c5530);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+    }
+
+    .cta-section h3 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        padding: 1rem;
+      }
+
+      .about-section {
+        padding: 1.5rem;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </body>
 </html>
+

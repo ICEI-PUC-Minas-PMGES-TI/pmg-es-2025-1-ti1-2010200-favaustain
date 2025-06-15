@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa - Favsustein</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="shortcut icon" href="../assets/img/fav.jpeg" type="image/x-icon">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container" onclick="window.location.href='../index.html'">
+        <img src="../assets/img/fav.jpeg" alt="Favsustein Logo" class="logo">
+        <h1 class="site-title">Favsustein</h1>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="pagina-exposicao-empresas.html" class="nav-link">Empresas</a></li>
+          <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+          <li><a href="calculo-gastos.html" class="nav-link">Calculadora</a></li>
+          <li><a href="cadastro-empresas.html" class="nav-link">Cadastrar Empresa</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="cadastro.html" class="btn btn-primary">Cadastrar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="form-container">
+        <form id="cadastroForm" class="form-box">
+          <h2>Cadastro de Empresa</h2>
+          
+          <label for="nome">Nome da Empresa</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite o nome da empresa" required>
+
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" placeholder="Breve descrição da empresa" required rows="3"></textarea>
+
+          <label for="categoria">Categoria</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecione uma categoria</option>
+            <option value="recomendada">Empresa Recomendada</option>
+            <option value="nova">Nova no Mercado</option>
+            <option value="pioneira">Empresa Pioneira</option>
+          </select>
+
+          <label for="site">Website</label>
+          <input type="url" id="site" name="site" placeholder="https://exemplo.com">
+
+          <label for="servicos">Serviços Oferecidos</label>
+          <textarea id="servicos" name="servicos" placeholder="Digite os serviços separados por vírgula" required rows="3"></textarea>
+          <div class="services-container" id="servicesPreview"></div>
+
+          <label for="email">Email de Contato</label>
+          <input type="email" id="email" name="email" placeholder="contato@empresa.com" required>
+
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="+55 11 99999-0000" required>
+
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Rua, número - Cidade, Estado" required>
+
+          <label for="historico">Histórico da Empresa</label>
+          <textarea id="historico" name="historico" placeholder="Conte a história da empresa, quando foi fundada, principais marcos..." required rows="4"></textarea>
+
+          <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
+          <a href="pagina-exposicao-empresas.html">Ver Lista de Empresas</a>
+        </form>
+      </div>
+
+      <div id="listaEmpresas" class="mt-4"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Favsustein</h4>
+          <p>Conectando periferia com economia de energia.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="pagina-exposicao-empresas.html">Empresas</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li><a href="calculo-gastos.html">Calculadora</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Para Empresas</h4>
+          <ul>
+            <li><a href="cadastro-empresas.html">Cadastrar Empresa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Favsustein. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../assets/js/modules/cadastroempresa.js"></script>
+</body>
+</html>
+
