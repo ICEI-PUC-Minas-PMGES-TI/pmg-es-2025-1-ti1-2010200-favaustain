@@ -1,7 +1,7 @@
 const jsonServer = require('json-server')
 const server = jsonServer.create()
-const router = jsonServer.router('./public/db/db.json')
-const middlewares = jsonServer.defaults({ noCors: true })
+const router = jsonServer.router('./codigo/public/db/db.json')
+const middlewares = jsonServer.defaults({ static: './codigo/public' })
 
 server.use(middlewares)
 server.use(router)

@@ -18,7 +18,7 @@ const empresasFicticias = [
       telefone: "(11) 3456-7890",
       email: "contato@ecosolarbrasil.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+    imagem: "/assets/img/empresa-recomendada-1.svg"
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const empresasFicticias = [
       telefone: "(21) 2345-6789",
       email: "info@greenpower.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    imagem: "/assets/img/empresa-recomendada-2.svg"
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const empresasFicticias = [
       telefone: "(31) 3456-7890",
       email: "social@suntech.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+    imagem: "/assets/img/empresa-recomendada-3.svg"
   },
   {
     id: 4,
@@ -60,7 +60,7 @@ const empresasFicticias = [
       telefone: "(11) 9876-5432",
       email: "hello@inovasolar.tech"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+    imagem: "/assets/img/empresa-nova-1.svg"
   },
   {
     id: 5,
@@ -74,7 +74,7 @@ const empresasFicticias = [
       telefone: "(85) 3210-9876",
       email: "atendimento@energiapop.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+    imagem: "/assets/img/empresa-nova-2.svg"
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const empresasFicticias = [
       telefone: "(47) 3456-7890",
       email: "contato@solarflex.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+    imagem: "/assets/img/empresa-nova-3.svg"
   },
   {
     id: 7,
@@ -102,7 +102,7 @@ const empresasFicticias = [
       telefone: "(11) 2345-6789",
       email: "institucional@solarpioneira.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+    imagem: "/assets/img/empresa-pioneira-1.svg"
   },
   {
     id: 8,
@@ -116,7 +116,7 @@ const empresasFicticias = [
       telefone: "(61) 3456-7890",
       email: "projetos@brasilsolar.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    imagem: "/assets/img/empresa-pioneira-2.svg"
   },
   {
     id: 9,
@@ -130,7 +130,7 @@ const empresasFicticias = [
       telefone: "(19) 3456-7890",
       email: "engenharia@tradsolar.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+    imagem: "/assets/img/empresa-pioneira-3.svg"
   },
   {
     id: 10,
@@ -144,13 +144,13 @@ const empresasFicticias = [
       telefone: "(81) 3333-4444",
       email: "contato@ventosolar.com.br"
     },
-    imagem: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    imagem: "/assets/img/empresa-pioneira-1.svg"
   }
 ];
 
-function initMap() {
-  let empresas = companyService.getAll();
-  if (empresas.length === 0) {
+async function initMap() {
+  let empresas = await companyService.getAll();
+  if (!empresas || empresas.length === 0) {
       empresas = empresasFicticias;
   }
 
@@ -228,7 +228,7 @@ function adicionarMarcadores(lista) {
       map: map,
       title: empresa.nome,
       icon: {
-        url: empresa.imagem || "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        url: empresa.imagem || "/assets/img/fav.jpeg",
         scaledSize: new google.maps.Size(32, 32),
         anchor: new google.maps.Point(16, 32)
       }
@@ -242,7 +242,7 @@ function adicionarMarcadores(lista) {
             <p style="margin: 5px 0;"><strong>Tipo:</strong> ${empresa.tipo || empresa.categoria}</p>
             <p style="margin: 5px 0;"><strong>Energia:</strong> ${empresa.tipoEnergia || 'Não especificado'}</p>
             <p style="margin: 5px 0;"><strong>Telefone:</strong> ${empresa.contato.telefone}</p>
-            <p style="margin: 5px 0; font-size: 0.9em;">${empresa.contato.endereco}</p>
+            <p style="margin: 5px 0; font-size: 0.9em;">${empresa.contato.endereco || 'Endereço não informado'}</p>
             <div style="margin-top: 10px; display: flex; gap: 5px;">
               <button class="btn btn-sm btn-primary calcular-rota-btn" 
                       data-lat="${position.lat}" 
@@ -354,9 +354,9 @@ function aplicarEventosDeFiltro() {
   if (filtroTipo) filtroTipo.addEventListener("change", aplicarFiltros);
 }
 
-function aplicarFiltros() {
-  let empresas = companyService.getAll();
-  if (empresas.length === 0) {
+async function aplicarFiltros() {
+  let empresas = await companyService.getAll();
+  if (!empresas || empresas.length === 0) {
       empresas = empresasFicticias;
   }
   

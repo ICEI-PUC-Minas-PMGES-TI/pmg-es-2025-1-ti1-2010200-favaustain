@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const economiaInput = document.getElementById('economia');
     
     if (!consumoInput || !tarifaSelect || !economiaInput) {
-      console.error('Elementos do formulário não encontrados');
       return;
     }
     
@@ -23,18 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const tarifa = parseFloat(tarifaSelect.value);
     const economia = parseFloat(economiaInput.value) / 100;
     
-    // Validação dos dados
-    if (!consumo || consumo <= 0) {
+    if (isNaN(consumo) || consumo <= 0) {
       alert('Por favor, insira um consumo válido.');
       return;
     }
     
-    if (!tarifa || tarifa <= 0) {
+    if (isNaN(tarifa) || tarifa <= 0) {
       alert('Por favor, selecione uma região/tarifa válida.');
       return;
     }
     
-    if (!economia || economia <= 0 || economia > 1) {
+    if (isNaN(economia) || economia <= 0 || economia > 1) {
       alert('Por favor, insira um percentual de economia válido (1-100%).');
       return;
     }
@@ -51,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       consumo: {
         atual: consumo,
         tarifa: tarifa,
-        regiao: regioes[tarifa] || 'Região não identificada',
+        regiao: regioes[String(tarifa)] || 'Região não identificada',
         economiaEsperada: economia,
         economiaCalculada: consumo * economia
       },
@@ -60,30 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
         gastoComEconomia: (consumo * (1 - economia)) * tarifa,
         economiaMensal: (consumo * economia * tarifa),
         economiaAnual: (consumo * economia * tarifa * 12),
-        reducaoCO2: (consumo * economia * 0.0817) // 0.0817 kg CO2 por kWh
-      },
-      data: new Date().toISOString()
+        reducaoCO2: (consumo * economia * 0.0817)
+      }
     };
 
     try {
-      // Verifica se o usuário está logado para salvar o histórico
       const usuario = localStorage.getItem('currentUser');
       if (usuario) {
         const userData = JSON.parse(usuario);
         calculoData.usuarioId = userData.id;
-        calculoService.create(calculoData);
+        await calculoService.create(calculoData);
+        await atualizarHistorico();
       }
-      
-      // Mostra os resultados
       mostrarResultados(calculoData);
-      
-      // Atualiza o histórico se o usuário estiver logado
-      if (usuario) {
-        atualizarHistorico();
-      }
     } catch (error) {
-      console.error('Erro ao salvar cálculo:', error);
-      // Mesmo com erro ao salvar, mostra os resultados
+      console.error('Erro ao salvar ou exibir cálculo:', error);
+      alert('Ocorreu um erro ao processar o cálculo.');
       mostrarResultados(calculoData);
     }
   });
@@ -94,29 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function atualizarHistorico() {
+async function atualizarHistorico() {
   try {
     const usuario = localStorage.getItem('currentUser');
+    const historicoElement = document.getElementById('historico');
+    if (!historicoElement) return;
+    
     if (!usuario) {
-      const historicoElement = document.getElementById('historico');
-      if (historicoElement) {
-        historicoElement.innerHTML = '<p>Faça login para ver seu histórico de cálculos.</p>';
-      }
+      historicoElement.innerHTML = '<p>Faça login para ver seu histórico de cálculos.</p>';
       return;
     }
     
     const userData = JSON.parse(usuario);
-    const calculos = calculoService.getByUserId(userData.id);
-    const historico = document.getElementById('historico');
-    
-    if (!historico) return;
+    const calculos = await calculoService.getByUserId(userData.id);
     
     if (calculos.length === 0) {
-      historico.innerHTML = '<p>Nenhum cálculo realizado ainda.</p>';
+      historicoElement.innerHTML = '<h3>Histórico de Cálculos</h3><p>Nenhum cálculo realizado ainda.</p>';
       return;
     }
 
-    historico.innerHTML = `
+    historicoElement.innerHTML = `
       <h3>Histórico de Cálculos</h3>
       ${calculos
         .sort((a, b) => new Date(b.data) - new Date(a.data))
@@ -129,8 +116,7 @@ function atualizarHistorico() {
             <p><strong>Economia anual:</strong> R$ ${calculo.resultados.economiaAnual.toFixed(2)}</p>
             <p><strong>Redução CO2:</strong> ${calculo.resultados.reducaoCO2.toFixed(2)} kg/mês</p>
           </div>
-        `)
-        .join('')}
+        `).join('')}
     `;
   } catch (error) {
     console.error('Erro ao carregar histórico:', error);
@@ -174,24 +160,14 @@ function mostrarResultados(calculo) {
         <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🌱 Impacto Ambiental</p>
         <p style="font-size: 1.5rem; color: #28a745; margin: 0; font-weight: bold;">-${calculo.resultados.reducaoCO2.toFixed(2)} kg CO2</p>
         <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">redução por mês</p>
-        <p style="font-size: 0.8rem; color: #888; margin-top: 1rem; font-style: italic;">
-          *Cálculo baseado no fator de emissão médio da matriz energética brasileira
-        </p>
-      </div>
-      <div style="margin-top: 2rem; text-align: center;">
-        <p style="font-size: 1.1rem; color: var(--primary-color); font-weight: 600;">
-          💡 Com energia solar, você pode economizar até R$ ${calculo.resultados.economiaAnual.toFixed(2)} por ano!
-        </p>
       </div>
     </div>
   `;
 
-  // Atualiza o gráfico se Chart.js estiver disponível
   if (typeof Chart !== 'undefined') {
     atualizarGrafico(calculo);
   }
   
-  // Scroll suave para os resultados
   resultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -208,14 +184,14 @@ function atualizarGrafico(calculo) {
   chart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['Gasto Atual', 'Economia Mensal'],
+      labels: ['Gasto com Economia', 'Economia Mensal'],
       datasets: [{
         data: [
           calculo.resultados.gastoComEconomia,
           calculo.resultados.economiaMensal
         ],
         backgroundColor: ['#dc3545', '#28a745'],
-        borderColor: ['#dc3545', '#28a745'],
+        borderColor: ['#ffffff', '#ffffff'],
         borderWidth: 2
       }]
     },

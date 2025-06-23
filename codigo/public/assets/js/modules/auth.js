@@ -31,11 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      // Usa o serviço de usuário local em vez de API REST
-      const usuario = userService.authenticate(emailInput.value.trim(), senhaInput.value.trim());
+      const usuario = await userService.authenticate(emailInput.value.trim(), senhaInput.value.trim());
 
       if (usuario) {
-        // Salva dados da sessão no localStorage (não sessionStorage para persistir)
         localStorage.setItem('currentUser', JSON.stringify({
           id: usuario.id,
           nome: usuario.nome,
@@ -43,8 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
         
         exibirMensagem(mensagemGeral, "sucesso", "Login realizado com sucesso! Redirecionando...");
+        
+        // Atualiza o estado da navegação antes do redirecionamento
+        if (window.app && typeof window.app.checkAuthStatus === 'function') {
+            window.app.checkAuthStatus();
+        }
+
         setTimeout(() => {
-          window.location.href = "perfil.html";
+          window.location.href = "/pages/perfil.html";
         }, 1500);
       } else {
         exibirMensagem(mensagemGeral, "erro", "Email ou senha inválidos.");

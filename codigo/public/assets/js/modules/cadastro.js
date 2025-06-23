@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (!emailInput || !validarEmail(emailInput.value.trim())) { 
         if (emailInput) exibirErroInput(emailInput, "Email inválido."); 
-        formularioValido = false; 
+        formularioValulario = false; 
       }
       if (!senhaInput || !validarSenha(senhaInput.value)) { 
         if (senhaInput) exibirErroInput(senhaInput, "Senha deve ter min. 8 caracteres, maiúscula, minúscula, número e símbolo."); 
@@ -97,21 +97,22 @@ document.addEventListener("DOMContentLoaded", () => {
         email: emailInput.value.trim(),
         senha: senhaInput.value,
         cpf: limparMascara(cpfInput.value),
-        cep: limparMascara(cepInput.value),
-        logradouro: logradouroInput.value.trim(),
-        bairro: bairroInput.value.trim(),
-        cidade: cidadeInput.value.trim(),
-        estado: estadoInput.value.trim()
+        endereco: {
+            cep: limparMascara(cepInput.value),
+            logradouro: logradouroInput.value.trim(),
+            bairro: bairroInput.value.trim(),
+            cidade: cidadeInput.value.trim(),
+            estado: estadoInput.value.trim()
+        }
       };
 
       try {
-        // Cria o novo usuário
-        const usuarioCriado = userService.create(novoUsuario);
+        await userService.create(novoUsuario);
         if (mensagemGeral) exibirMensagem(mensagemGeral, "sucesso", "Cadastro realizado com sucesso! Redirecionando para o login...");
         form.reset();
         
         setTimeout(() => {
-          window.location.href = "login.html";
+          window.location.href = "/pages/login.html";
         }, 1500); 
       } catch (error) {
         if (mensagemGeral) exibirMensagem(mensagemGeral, "erro", `Erro no cadastro: ${error.message}`);
@@ -136,11 +137,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-function mostrarMensagem(texto, tipo) {
-    const mensagem = document.getElementById('mensagem-geral');
-    if (mensagem) {
-      mensagem.textContent = texto;
-      mensagem.className = `mensagem ${tipo}`;
-    }
-}

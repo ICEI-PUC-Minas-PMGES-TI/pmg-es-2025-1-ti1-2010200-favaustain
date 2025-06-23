@@ -15,36 +15,82 @@
       },
       "dataCadastro": "",
       "ultimoAcesso": ""
+    },
+    {
+      "nome": "joao",
+      "email": "joaopedrosalesdedeus@gmail.com",
+      "senha": "Teste1234!",
+      "cpf": "14047123641",
+      "endereco": {
+        "cep": "30840040",
+        "logradouro": "Rua dos Comerciantes",
+        "bairro": "Alípio de Melo",
+        "cidade": "Belo Horizonte",
+        "estado": "MG"
+      },
+      "dataCadastro": "2025-06-23T19:08:34.627Z",
+      "ultimoAcesso": "2025-06-23T21:17:42.253Z",
+      "id": "nMMIGtH"
     }
   ],
   "empresas": [
     {
-      "id": "",
-      "nome": "",
-      "descricao": "",
-      "categoria": "",
-      "tipo": "",
-      "servicos": [],
+      "nome": "teste",
+      "descricao": "teste",
+      "categoria": "nova",
+      "servicos": [
+        "teste"
+      ],
       "contato": {
-        "email": "",
-        "telefone": "",
-        "site": ""
+        "email": "joaopedrosalesdedeus@gmail.com",
+        "telefone": "31983251584",
+        "site": "https://www.monsterenergy.com/pt-br/"
       },
       "endereco": {
-        "logradouro": "",
-        "numero": "",
-        "bairro": "",
-        "cidade": "",
-        "estado": "",
-        "cep": "",
+        "logradouro": "comerciantes 175",
         "coordenadas": {
           "latitude": 0,
           "longitude": 0
         }
       },
-      "historico": "",
-      "dataCadastro": "",
-      "status": "ativo"
+      "historico": "teste",
+      "dataCadastro": "2025-06-23T19:09:46.980Z",
+      "status": "ativo",
+      "id": "LTHz7ul",
+      "usuarioId": "nMMIGtH",
+      "avaliacao": 0,
+      "projetos": 0,
+      "economia_media": "N/A",
+      "imagem": "/assets/img/empresa-nova-1.svg"
+    },
+    {
+      "nome": "teste",
+      "descricao": "teste",
+      "categoria": "recomendada",
+      "servicos": [
+        "teste teste"
+      ],
+      "contato": {
+        "email": "anonymousplayers54@gmail.com",
+        "telefone": "+5531983251584",
+        "site": "https://www.monsterenergy.com/pt-br/"
+      },
+      "endereco": {
+        "logradouro": "adsgadsg",
+        "coordenadas": {
+          "latitude": 0,
+          "longitude": 0
+        }
+      },
+      "historico": "teste",
+      "avaliacao": 0,
+      "projetos": 0,
+      "economia_media": "N/A",
+      "imagem": "/assets/img/empresa-recomendada-1.svg",
+      "id": "db_1750711978744",
+      "dataCadastro": "2025-06-23T20:52:58.744Z",
+      "status": "ativo",
+      "usuarioId": "nMMIGtH"
     }
   ],
   "calculos": [

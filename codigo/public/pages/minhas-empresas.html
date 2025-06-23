@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhas Empresas - Favsustein</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="shortcut icon" href="/assets/img/fav.jpeg" type="image/x-icon">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container" onclick="window.location.href='/'">
+        <img src="/assets/img/fav.jpeg" alt="Favsustein Logo" class="logo">
+        <h1 class="site-title">Favsustein</h1>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/pages/pagina-exposicao-empresas.html" class="nav-link">Empresas</a></li>
+          <li><a href="/pages/mapa.html" class="nav-link">Mapa</a></li>
+          <li><a href="/pages/calculo-gastos.html" class="nav-link">Calculadora</a></li>
+          <li><a href="/pages/cadastro-empresas.html" class="nav-link">Cadastrar Empresa</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="/pages/perfil.html" class="btn btn-outline">Perfil</a>
+        <button id="globalLogoutButton" class="btn btn-primary">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="form-container">
+        <h2>Minhas Empresas Cadastradas</h2>
+        <p id="mensagem-geral" class="mensagem"></p>
+        <div id="lista-minhas-empresas" class="cards-container">
+          </div>
+        <div id="no-companies-message" class="hidden" style="text-align: center; margin-top: 2rem;">
+          <p>Você ainda não cadastrou nenhuma empresa.</p>
+          <a href="/pages/cadastro-empresas.html" class="btn btn-primary">Cadastrar Nova Empresa</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="editCompanyModal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Editar Empresa</h2>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="editCompanyForm" class="form-box">
+            <input type="hidden" id="edit-company-id">
+            
+            <label for="edit-nome">Nome da Empresa</label>
+            <input type="text" id="edit-nome" name="nome" required>
+
+            <label for="edit-descricao">Descrição</label>
+            <textarea id="edit-descricao" name="descricao" required rows="3"></textarea>
+
+            <label for="edit-categoria">Categoria</label>
+            <select id="edit-categoria" name="categoria" required>
+              <option value="recomendada">Empresa Recomendada</option>
+              <option value="nova">Nova no Mercado</option>
+              <option value="pioneira">Empresa Pioneira</option>
+            </select>
+
+            <label for="edit-site">Website</label>
+            <input type="url" id="edit-site" name="site">
+
+            <label for="edit-servicos">Serviços Oferecidos</label>
+            <textarea id="edit-servicos" name="servicos" required rows="3"></textarea>
+            <div class="services-container" id="editServicesPreview"></div>
+
+            <label for="edit-email">Email de Contato</label>
+            <input type="email" id="edit-email" name="email" required>
+
+            <label for="edit-telefone">Telefone</label>
+            <input type="tel" id="edit-telefone" name="telefone" required>
+
+            <label for="edit-endereco">Endereço</label>
+            <input type="text" id="edit-endereco" name="endereco" required>
+
+            <label for="edit-historico">Histórico da Empresa</label>
+            <textarea id="edit-historico" name="historico" required rows="4"></textarea>
+
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Favsustein</h4>
+          <p>Conectando periferia com economia de energia.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="/pages/pagina-exposicao-empresas.html">Empresas</a></li>
+            <li><a href="/pages/mapa.html">Mapa</a></li>
+            <li><a href="/pages/calculo-gastos.html">Calculadora</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Para Empresas</h4>
+          <ul>
+            <li><a href="/pages/cadastro-empresas.html">Cadastrar Empresa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Favsustein. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/modules/main.js"></script>
+  <script type="module" src="/assets/js/modules/user-companies.js"></script>
+</body>
+</html>

@@ -36,14 +36,38 @@ class FavsusteinApp {
 
   setupNavigation() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navList = document.querySelector('.nav-list');
     
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href').split('/').pop();
-      if (href === currentPage) {
-        link.classList.add('active');
-      }
-    });
+    if (navList) {
+        navList.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+        const user = localStorage.getItem('currentUser');
+        if (user) {
+            const existingMyCompaniesLink = navList.querySelector('a[href="/pages/minhas-empresas.html"]');
+            if (!existingMyCompaniesLink) {
+                const li = document.createElement('li');
+                li.innerHTML = '<a href="/pages/minhas-empresas.html" class="nav-link">Minhas Empresas</a>';
+                const cadastrarEmpresaLi = navList.querySelector('a[href="/pages/cadastro-empresas.html"]')?.closest('li');
+                if (cadastrarEmpresaLi) {
+                    navList.insertBefore(li, cadastrarEmpresaLi);
+                } else {
+                    navList.appendChild(li);
+                }
+            }
+        } else {
+            const existingMyCompaniesLink = navList.querySelector('a[href="/pages/minhas-empresas.html"]')?.closest('li');
+            if (existingMyCompaniesLink) {
+                navList.removeChild(existingMyCompaniesLink);
+            }
+        }
+
+        navList.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href').split('/').pop();
+            if (href === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    }
 
     this.setupMobileMenu();
   }
@@ -97,12 +121,18 @@ class FavsusteinApp {
             <a href="/pages/cadastro.html" class="btn btn-primary">Cadastrar</a>
         `;
       }
+    } else {
+         authButtons.innerHTML = `
+            <a href="/pages/login.html" class="btn btn-outline">Login</a>
+            <a href="/pages/cadastro.html" class="btn btn-primary">Cadastrar</a>
+        `;
     }
+    this.setupNavigation();
   }
 
   logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = '/index.html';
+    window.location.href = '/';
   }
 }
 

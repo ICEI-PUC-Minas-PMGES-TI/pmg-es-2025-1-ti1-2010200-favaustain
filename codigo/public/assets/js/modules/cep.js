@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const estadoInput = document.getElementById("estado");
   const mensagemGeral = document.getElementById("mensagem-geral");
 
-  if (!cepInput) return; // Se não há campo CEP na página, não executa
+  if (!cepInput) return;
 
   const preencherEndereco = (data) => {
     if (logradouroInput) logradouroInput.value = data.logradouro || "";
