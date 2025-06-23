@@ -1,6 +1,6 @@
-// Dados das empresas fictícias
-const empresasData = [
-  // Empresas Recomendadas
+import { companyService } from './db-service.js';
+
+const empresasDataFicticia = [
   {
     id: 1,
     nome: "EcoSolar Brasil",
@@ -70,8 +70,6 @@ const empresasData = [
     projetos: 2156,
     economia_media: "R$ 680/mês"
   },
-
-  // Empresas Novas
   {
     id: 4,
     nome: "InovaSolar Tech",
@@ -141,8 +139,6 @@ const empresasData = [
     projetos: 412,
     economia_media: "R$ 650/mês"
   },
-
-  // Empresas Pioneiras
   {
     id: 7,
     nome: "Solar Pioneira Ltda",
@@ -216,24 +212,28 @@ const empresasData = [
 
 document.addEventListener('DOMContentLoaded', () => {
   carregarEmpresas();
+  adicionarEventListenersGlobais();
 });
 
 function carregarEmpresas() {
-  // Carrega empresas recomendadas
+  let empresasData = companyService.getAll();
+
+  if (empresasData.length === 0) {
+      empresasData = empresasDataFicticia;
+  }
+
   const recomendadasContainer = document.getElementById('recomendadas');
   if (recomendadasContainer) {
     const empresasRecomendadas = empresasData.filter(e => e.categoria === 'recomendada');
     recomendadasContainer.innerHTML = empresasRecomendadas.map(empresa => criarCardEmpresa(empresa)).join('');
   }
 
-  // Carrega empresas novas
   const novasContainer = document.getElementById('novas');
   if (novasContainer) {
     const empresasNovas = empresasData.filter(e => e.categoria === 'nova');
     novasContainer.innerHTML = empresasNovas.map(empresa => criarCardEmpresa(empresa)).join('');
   }
 
-  // Carrega empresas pioneiras
   const pioneirasContainer = document.getElementById('pioneiras');
   if (pioneirasContainer) {
     const empresasPioneiras = empresasData.filter(e => e.categoria === 'pioneira');
@@ -286,13 +286,16 @@ function criarCardEmpresa(empresa) {
 }
 
 function abrirDetalhesEmpresa(empresaId) {
-  const empresa = empresasData.find(e => e.id === empresaId);
-  if (!empresa) return;
+    let empresasData = companyService.getAll();
+    if (empresasData.length === 0) {
+        empresasData = empresasDataFicticia;
+    }
+    const empresa = empresasData.find(e => e.id == empresaId);
+    if (!empresa) return;
 
-  // Criar modal com detalhes da empresa
-  const modal = document.createElement('div');
-  modal.className = 'modal-overlay';
-  modal.innerHTML = `
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
     <div class="modal-content">
       <div class="modal-header">
         <h2>${empresa.nome}</h2>
@@ -355,17 +358,19 @@ function abrirDetalhesEmpresa(empresaId) {
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
 
-  // Adicionar event listener ao botão de contato dentro do modal
   modal.querySelector('.btn-contato-modal').addEventListener('click', () => {
     entrarEmContato(empresa.id);
   });
 }
 
 function entrarEmContato(empresaId) {
-  const empresa = empresasData.find(e => e.id === empresaId);
-  if (!empresa) return;
+    let empresasData = companyService.getAll();
+    if (empresasData.length === 0) {
+        empresasData = empresasDataFicticia;
+    }
+    const empresa = empresasData.find(e => e.id == empresaId);
+    if (!empresa) return;
 
-  // Simular abertura de contato (pode ser integrado com WhatsApp, email, etc.)
   const mensagem = `Olá! Gostaria de saber mais sobre os serviços da ${empresa.nome}. Vi vocês no site Favsustein.`;
   const telefone = empresa.contato.telefone.replace(/\D/g, '');
   const whatsappUrl = `https://wa.me/55${telefone}?text=${encodeURIComponent(mensagem)}`;
@@ -381,22 +386,21 @@ function fecharModal() {
   }
 }
 
-// Adicionar event listeners aos botões após o carregamento das empresas
-document.addEventListener('DOMContentLoaded', () => {
-  carregarEmpresas();
-  
-  // Adicionar event listeners aos cards e botões
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', (event) => {
-      const empresaId = parseInt(card.dataset.empresaId);
-      abrirDetalhesEmpresa(empresaId);
-    });
-
-    // Prevenir que o clique no botão de contato propague para o card
-    card.querySelector('.btn-contato').addEventListener('click', (event) => {
-      event.stopPropagation();
-      const empresaId = parseInt(card.dataset.empresaId);
-      entrarEmContato(empresaId);
-    });
+function adicionarEventListenersGlobais() {
+  document.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
+    if (card) {
+      if (event.target.closest('.btn-contato')) {
+        event.stopPropagation();
+        const empresaId = card.dataset.empresaId;
+        entrarEmContato(empresaId);
+      } else if (event.target.closest('.btn-detalhes') || !event.target.closest('button')) {
+        const empresaId = card.dataset.empresaId;
+        abrirDetalhesEmpresa(empresaId);
+      }
+    }
+    if (event.target.matches('.modal-close')) {
+      fecharModal();
+    }
   });
-});
+}
