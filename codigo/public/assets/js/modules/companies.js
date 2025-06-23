@@ -293,74 +293,103 @@ function abrirDetalhesEmpresa(empresaId) {
     const empresa = empresasData.find(e => e.id == empresaId);
     if (!empresa) return;
 
-    const modal = document.createElement('div');
-    modal.className = 'modal-overlay';
-    modal.innerHTML = `
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>${empresa.nome}</h2>
-        <button class="modal-close" onclick="fecharModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="empresa-detalhes-completos">
-          <div class="empresa-info-principal">
-            <img src="${empresa.imagem}" alt="${empresa.nome}" class="empresa-logo-grande">
-            <div class="empresa-resumo">
-              <p class="empresa-descricao-completa">${empresa.descricao}</p>
-              <div class="empresa-metricas">
-                <div class="metrica">
-                  <span class="metrica-numero">${empresa.avaliacao}</span>
-                  <span class="metrica-label">Avaliação</span>
-                </div>
-                <div class="metrica">
-                  <span class="metrica-numero">${empresa.projetos.toLocaleString()}</span>
-                  <span class="metrica-label">Projetos</span>
-                </div>
-                <div class="metrica">
-                  <span class="metrica-numero">${empresa.economia_media}</span>
-                  <span class="metrica-label">Economia Média</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="empresa-secoes">
-            <div class="secao">
-              <h3>Serviços Oferecidos</h3>
-              <ul class="servicos-lista">
-                ${empresa.servicos.map(servico => `<li>${servico}</li>`).join('')}
-              </ul>
-            </div>
-            
-            <div class="secao">
-              <h3>Informações de Contato</h3>
-              <div class="contato-info">
-                <p><strong>Email:</strong> ${empresa.contato.email}</p>
-                <p><strong>Telefone:</strong> ${empresa.contato.telefone}</p>
-                <p><strong>Endereço:</strong> ${empresa.contato.endereco}</p>
-              </div>
-            </div>
-            
-            <div class="secao">
-              <h3>Sobre a Empresa</h3>
-              <p class="empresa-historico">${empresa.historico}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary btn-contato-modal">Entrar em Contato</button>
-        <button class="btn btn-outline" onclick="fecharModal()">Fechar</button>
-      </div>
-    </div>
-  `;
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
 
-  document.body.appendChild(modal);
-  document.body.style.overflow = 'hidden';
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
 
-  modal.querySelector('.btn-contato-modal').addEventListener('click', () => {
-    entrarEmContato(empresa.id);
-  });
+    const modalHeader = document.createElement('div');
+    modalHeader.className = 'modal-header';
+    const h2 = document.createElement('h2');
+    h2.textContent = empresa.nome;
+    const closeButtonHeader = document.createElement('button');
+    closeButtonHeader.className = 'modal-close';
+    closeButtonHeader.innerHTML = '&times;';
+    modalHeader.append(h2, closeButtonHeader);
+
+    const modalBody = document.createElement('div');
+    modalBody.className = 'modal-body';
+    
+    const secaoServicos = document.createElement('div');
+    secaoServicos.className = 'secao';
+    const h3Servicos = document.createElement('h3');
+    h3Servicos.textContent = 'Serviços Oferecidos';
+    const ulServicos = document.createElement('ul');
+    ulServicos.className = 'servicos-lista';
+    empresa.servicos.forEach(servicoText => {
+        const li = document.createElement('li');
+        li.textContent = servicoText;
+        ulServicos.appendChild(li);
+    });
+    secaoServicos.append(h3Servicos, ulServicos);
+
+    const secaoContato = document.createElement('div');
+    secaoContato.className = 'secao';
+    secaoContato.innerHTML = `
+        <h3>Informações de Contato</h3>
+        <div class="contato-info">
+            <p><strong>Email:</strong> ${empresa.contato.email}</p>
+            <p><strong>Telefone:</strong> ${empresa.contato.telefone}</p>
+            <p><strong>Endereço:</strong> ${empresa.contato.endereco}</p>
+        </div>`;
+
+    const secaoSobre = document.createElement('div');
+    secaoSobre.className = 'secao';
+    secaoSobre.innerHTML = `
+        <h3>Sobre a Empresa</h3>
+        <p class="empresa-historico">${empresa.historico}</p>`;
+
+    const infoPrincipal = document.createElement('div');
+    infoPrincipal.className = 'empresa-info-principal';
+    infoPrincipal.innerHTML = `
+        <img src="${empresa.imagem}" alt="${empresa.nome}" class="empresa-logo-grande">
+        <div class="empresa-resumo">
+            <p class="empresa-descricao-completa">${empresa.descricao}</p>
+            <div class="empresa-metricas">
+                <div class="metrica">
+                    <span class="metrica-numero">${empresa.avaliacao}</span>
+                    <span class="metrica-label">Avaliação</span>
+                </div>
+                <div class="metrica">
+                    <span class="metrica-numero">${empresa.projetos.toLocaleString()}</span>
+                    <span class="metrica-label">Projetos</span>
+                </div>
+                <div class="metrica">
+                    <span class="metrica-numero">${empresa.economia_media}</span>
+                    <span class="metrica-label">Economia Média</span>
+                </div>
+            </div>
+        </div>`;
+    
+    const empresaSeccao = document.createElement('div');
+    empresaSeccao.className = 'empresa-secoes';
+    empresaSeccao.append(secaoServicos, secaoContato, secaoSobre);
+
+    const detalhesCompletos = document.createElement('div');
+    detalhesCompletos.className = 'empresa-detalhes-completos';
+    detalhesCompletos.append(infoPrincipal, empresaSeccao);
+    modalBody.appendChild(detalhesCompletos);
+
+    const modalFooter = document.createElement('div');
+    modalFooter.className = 'modal-footer';
+    const contatoButtonFooter = document.createElement('button');
+    contatoButtonFooter.className = 'btn btn-primary btn-contato-modal';
+    contatoButtonFooter.textContent = 'Entrar em Contato';
+    
+    modalFooter.append(contatoButtonFooter);
+
+    modalContent.append(modalHeader, modalBody, modalFooter);
+    modalOverlay.appendChild(modalContent);
+    
+    document.body.appendChild(modalOverlay);
+    document.body.style.overflow = 'hidden';
+
+    contatoButtonFooter.addEventListener('click', () => {
+        entrarEmContato(empresa.id);
+    });
+  
+    closeButtonHeader.addEventListener('click', fecharModal);
 }
 
 function entrarEmContato(empresaId) {
@@ -371,11 +400,11 @@ function entrarEmContato(empresaId) {
     const empresa = empresasData.find(e => e.id == empresaId);
     if (!empresa) return;
 
-  const mensagem = `Olá! Gostaria de saber mais sobre os serviços da ${empresa.nome}. Vi vocês no site Favsustein.`;
-  const telefone = empresa.contato.telefone.replace(/\D/g, '');
-  const whatsappUrl = `https://wa.me/55${telefone}?text=${encodeURIComponent(mensagem)}`;
+    const mensagem = `Olá! Gostaria de saber mais sobre os serviços da ${empresa.nome}. Vi vocês no site Favsustein.`;
+    const telefone = empresa.contato.telefone.replace(/\D/g, '');
+    const whatsappUrl = `https://wa.me/55${telefone}?text=${encodeURIComponent(mensagem)}`;
   
-  window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, '_blank');
 }
 
 function fecharModal() {
