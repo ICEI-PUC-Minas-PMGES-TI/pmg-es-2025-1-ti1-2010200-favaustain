@@ -174,17 +174,12 @@ function atualizarGrafico(calculo) {
         }]
       },
       options: {
-        responsive: true,
+        responsive: false, // Desativa responsividade para evitar resize
         maintainAspectRatio: false,
+        animation: false,
+        events: [],
         plugins: {
-          title: {
-            display: true,
-            text: 'Distribuição dos Gastos Mensais',
-            font: {
-              size: 16,
-              weight: 'bold'
-            }
-          },
+          tooltip: { enabled: false },
           legend: {
             position: 'bottom',
             labels: {
@@ -193,8 +188,18 @@ function atualizarGrafico(calculo) {
                 size: 14
               }
             }
+          },
+          title: {
+            display: true,
+            text: 'Distribuição dos Gastos Mensais',
+            font: {
+              size: 16,
+              weight: 'bold'
+            }
           }
-        }
+        },
+        hover: { mode: null },
+        interaction: { mode: null },
       }
     });
   }

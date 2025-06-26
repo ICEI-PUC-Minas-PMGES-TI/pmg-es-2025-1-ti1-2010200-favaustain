@@ -204,6 +204,44 @@
       "usuarioId": "nMMIGtH",
       "id": "calc_1750962261418",
       "data": "2025-06-26T18:24:21.418Z"
+    },
+    {
+      "consumo": {
+        "atual": 300,
+        "tarifa": 0.6,
+        "regiao": "Sudeste",
+        "economiaEsperada": 0.2,
+        "economiaCalculada": 60
+      },
+      "resultados": {
+        "gastoAtual": 180,
+        "gastoComEconomia": 144,
+        "economiaMensal": 36,
+        "economiaAnual": 432,
+        "reducaoCO2": 4.901999999999999
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750962496900",
+      "data": "2025-06-26T18:28:16.900Z"
+    },
+    {
+      "consumo": {
+        "atual": 300,
+        "tarifa": 0.6,
+        "regiao": "Sudeste",
+        "economiaEsperada": 0.2,
+        "economiaCalculada": 60
+      },
+      "resultados": {
+        "gastoAtual": 180,
+        "gastoComEconomia": 144,
+        "economiaMensal": 36,
+        "economiaAnual": 432,
+        "reducaoCO2": 4.901999999999999
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750962555608",
+      "data": "2025-06-26T18:29:15.608Z"
     }
   ],
   "metadata": {
