@@ -42,10 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
         
         exibirMensagem(mensagemGeral, "sucesso", "Login realizado com sucesso! Redirecionando...");
         
-        // Atualiza o estado da navegação antes do redirecionamento
-        if (window.app && typeof window.app.checkAuthStatus === 'function') {
-            window.app.checkAuthStatus();
-        }
+        // Remove a chamada a window.app.checkAuthStatus() se a lógica de navegação dinâmica não estiver mais em main.js
+        // Se ainda estiver lá e for relevante, mantenha. Por enquanto, removo para simplificar.
+        // if (window.app && typeof window.app.checkAuthStatus === 'function') {
+        //     window.app.checkAuthStatus();
+        // }
 
         setTimeout(() => {
           window.location.href = "/pages/perfil.html";

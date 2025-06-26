@@ -41,26 +41,8 @@ class FavsusteinApp {
     if (navList) {
         navList.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
 
-        const user = localStorage.getItem('currentUser');
-        if (user) {
-            const existingMyCompaniesLink = navList.querySelector('a[href="/pages/minhas-empresas.html"]');
-            if (!existingMyCompaniesLink) {
-                const li = document.createElement('li');
-                li.innerHTML = '<a href="/pages/minhas-empresas.html" class="nav-link">Minhas Empresas</a>';
-                const cadastrarEmpresaLi = navList.querySelector('a[href="/pages/cadastro-empresas.html"]')?.closest('li');
-                if (cadastrarEmpresaLi) {
-                    navList.insertBefore(li, cadastrarEmpresaLi);
-                } else {
-                    navList.appendChild(li);
-                }
-            }
-        } else {
-            const existingMyCompaniesLink = navList.querySelector('a[href="/pages/minhas-empresas.html"]')?.closest('li');
-            if (existingMyCompaniesLink) {
-                navList.removeChild(existingMyCompaniesLink);
-            }
-        }
-
+        // Lógica para "Minhas Empresas" removida daqui. Será gerenciada apenas no perfil.
+        
         navList.querySelectorAll('.nav-link').forEach(link => {
             const href = link.getAttribute('href').split('/').pop();
             if (href === currentPage) {
@@ -127,7 +109,7 @@ class FavsusteinApp {
             <a href="/pages/cadastro.html" class="btn btn-primary">Cadastrar</a>
         `;
     }
-    this.setupNavigation();
+    // Não precisa chamar setupNavigation aqui, pois a lógica de "Minhas Empresas" foi removida.
   }
 
   logout() {

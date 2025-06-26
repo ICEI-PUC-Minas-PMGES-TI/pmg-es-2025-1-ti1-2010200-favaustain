@@ -130,93 +130,72 @@ async function atualizarHistorico() {
 function mostrarResultados(calculo) {
   const resultado = document.getElementById('resultado');
   if (!resultado) return;
-  
-  resultado.innerHTML = `
-    <div style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-      <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; text-align: center;">🔋 Resultados da Simulação</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">💸 Gasto Atual</p>
-          <p style="font-size: 1.8rem; color: #dc3545; margin: 0; font-weight: bold;">R$ ${calculo.resultados.gastoAtual.toFixed(2)}</p>
-          <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por mês</p>
-        </div>
-        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">💰 Gasto com Economia</p>
-          <p style="font-size: 1.8rem; color: var(--primary-color); margin: 0; font-weight: bold;">R$ ${calculo.resultados.gastoComEconomia.toFixed(2)}</p>
-          <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por mês</p>
-        </div>
-        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">📈 Economia Mensal</p>
-          <p style="font-size: 1.8rem; color: #28a745; margin: 0; font-weight: bold;">R$ ${calculo.resultados.economiaMensal.toFixed(2)}</p>
-          <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">economia</p>
-        </div>
-        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🎯 Economia Anual</p>
-          <p style="font-size: 1.8rem; color: #28a745; margin: 0; font-weight: bold;">R$ ${calculo.resultados.economiaAnual.toFixed(2)}</p>
-          <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por ano</p>
-        </div>
-      </div>
-      <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🌱 Impacto Ambiental</p>
-        <p style="font-size: 1.5rem; color: #28a745; margin: 0; font-weight: bold;">-${calculo.resultados.reducaoCO2.toFixed(2)} kg CO2</p>
-        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">redução por mês</p>
-      </div>
-    </div>
-  `;
 
-  if (typeof Chart !== 'undefined') {
-    atualizarGrafico(calculo);
-  }
-  
-  resultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Update the text content of the specific result elements
+  document.getElementById('gastoAtual').textContent = `R$ ${calculo.resultados.gastoAtual.toFixed(2)}`;
+  document.getElementById('gastoComEconomia').textContent = `R$ ${calculo.resultados.gastoComEconomia.toFixed(2)}`;
+  document.getElementById('economiaMensal').textContent = `R$ ${calculo.resultados.economiaMensal.toFixed(2)}`;
+  document.getElementById('economiaAnual').textContent = `R$ ${calculo.resultados.economiaAnual.toFixed(2)}`;
+  document.getElementById('reducaoCO2').textContent = `-${calculo.resultados.reducaoCO2.toFixed(2)} kg CO2`;
+
+  // Ensure the results section is visible if it was hidden
+  resultado.style.display = 'block'; // Or whatever display style is appropriate
+
+  // Update the chart data
+  atualizarGrafico(calculo);
 }
 
 function atualizarGrafico(calculo) {
   const canvas = document.getElementById('grafico');
   if (!canvas) return;
-  
   const ctx = canvas.getContext('2d');
-  
-  if (chart) {
-    chart.destroy();
-  }
 
-  chart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Gasto com Economia', 'Economia Mensal'],
-      datasets: [{
-        data: [
-          calculo.resultados.gastoComEconomia,
-          calculo.resultados.economiaMensal
-        ],
-        backgroundColor: ['#dc3545', '#28a745'],
-        borderColor: ['#ffffff', '#ffffff'],
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Distribuição dos Gastos Mensais',
-          font: {
-            size: 16,
-            weight: 'bold'
-          }
-        },
-        legend: {
-          position: 'bottom',
-          labels: {
-            padding: 20,
+  if (chart) {
+    // Atualiza os dados do gráfico existente sem destruir/recriar o canvas
+    chart.data.datasets[0].data = [
+      calculo.resultados.gastoComEconomia,
+      calculo.resultados.economiaMensal
+    ];
+    chart.update();
+  } else {
+    // Cria o gráfico se ele ainda não existir
+    chart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Gasto com Economia', 'Economia Mensal'],
+        datasets: [{
+          data: [
+            calculo.resultados.gastoComEconomia,
+            calculo.resultados.economiaMensal
+          ],
+          backgroundColor: ['#dc3545', '#28a745'],
+          borderColor: ['#ffffff', '#ffffff'],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Distribuição dos Gastos Mensais',
             font: {
-              size: 14
+              size: 16,
+              weight: 'bold'
+            }
+          },
+          legend: {
+            position: 'bottom',
+            labels: {
+              padding: 20,
+              font: {
+                size: 14
+              }
             }
           }
         }
       }
-    }
-  });
+    });
+  }
 }

@@ -109,6 +109,101 @@
         "economiaAnual": 0,
         "reducaoCO2": 0
       }
+    },
+    {
+      "consumo": {
+        "atual": 300,
+        "tarifa": 0.55,
+        "regiao": "Sul",
+        "economiaEsperada": 0.3,
+        "economiaCalculada": 90
+      },
+      "resultados": {
+        "gastoAtual": 165,
+        "gastoComEconomia": 115.50000000000001,
+        "economiaMensal": 49.50000000000001,
+        "economiaAnual": 594.0000000000001,
+        "reducaoCO2": 7.353
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750961722759",
+      "data": "2025-06-26T18:15:22.759Z"
+    },
+    {
+      "consumo": {
+        "atual": 30,
+        "tarifa": 0.55,
+        "regiao": "Sul",
+        "economiaEsperada": 0.3,
+        "economiaCalculada": 9
+      },
+      "resultados": {
+        "gastoAtual": 16.5,
+        "gastoComEconomia": 11.55,
+        "economiaMensal": 4.95,
+        "economiaAnual": 59.400000000000006,
+        "reducaoCO2": 0.7353
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750961791110",
+      "data": "2025-06-26T18:16:31.110Z"
+    },
+    {
+      "consumo": {
+        "atual": 30,
+        "tarifa": 0.6,
+        "regiao": "Sudeste",
+        "economiaEsperada": 0.1,
+        "economiaCalculada": 3
+      },
+      "resultados": {
+        "gastoAtual": 18,
+        "gastoComEconomia": 16.2,
+        "economiaMensal": 1.7999999999999998,
+        "economiaAnual": 21.599999999999998,
+        "reducaoCO2": 0.24509999999999998
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750961886601",
+      "data": "2025-06-26T18:18:06.601Z"
+    },
+    {
+      "consumo": {
+        "atual": 300,
+        "tarifa": 0.6,
+        "regiao": "Sudeste",
+        "economiaEsperada": 0.2,
+        "economiaCalculada": 60
+      },
+      "resultados": {
+        "gastoAtual": 180,
+        "gastoComEconomia": 144,
+        "economiaMensal": 36,
+        "economiaAnual": 432,
+        "reducaoCO2": 4.901999999999999
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750962234023",
+      "data": "2025-06-26T18:23:54.023Z"
+    },
+    {
+      "consumo": {
+        "atual": 300,
+        "tarifa": 0.55,
+        "regiao": "Sul",
+        "economiaEsperada": 0.2,
+        "economiaCalculada": 60
+      },
+      "resultados": {
+        "gastoAtual": 165,
+        "gastoComEconomia": 132,
+        "economiaMensal": 33,
+        "economiaAnual": 396,
+        "reducaoCO2": 4.901999999999999
+      },
+      "usuarioId": "nMMIGtH",
+      "id": "calc_1750962261418",
+      "data": "2025-06-26T18:24:21.418Z"
     }
   ],
   "metadata": {

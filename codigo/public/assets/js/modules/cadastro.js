@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (!emailInput || !validarEmail(emailInput.value.trim())) { 
         if (emailInput) exibirErroInput(emailInput, "Email inválido."); 
-        formularioValulario = false; 
+        formularioValido = false; 
       }
       if (!senhaInput || !validarSenha(senhaInput.value)) { 
         if (senhaInput) exibirErroInput(senhaInput, "Senha deve ter min. 8 caracteres, maiúscula, minúscula, número e símbolo."); 

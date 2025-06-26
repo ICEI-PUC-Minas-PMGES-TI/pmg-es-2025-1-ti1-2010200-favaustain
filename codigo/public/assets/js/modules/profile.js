@@ -74,16 +74,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (form) {
-        const divButtons = document.createElement('div');
-        divButtons.className = 'mt-3'; 
-        
-        const linkMinhasEmpresas = document.createElement('a');
-        linkMinhasEmpresas.href = '/pages/minhas-empresas.html';
-        linkMinhasEmpresas.className = 'btn btn-outline';
-        linkMinhasEmpresas.textContent = 'Minhas Empresas';
-        divButtons.appendChild(linkMinhasEmpresas);
-
-        form.insertBefore(divButtons, btnSalvar.nextElementSibling); 
+        // Removendo a adição do link "Minhas Empresas" aqui, pois a página será removida.
+        // const divButtons = document.createElement('div');
+        // divButtons.className = 'mt-3'; 
+        // const linkMinhasEmpresas = document.createElement('a');
+        // linkMinhasEmpresas.href = '/pages/minhas-empresas.html';
+        // linkMinhasEmpresas.className = 'btn btn-outline';
+        // linkMinhasEmpresas.textContent = 'Minhas Empresas';
+        // divButtons.appendChild(linkMinhasEmpresas);
+        // form.insertBefore(divButtons, btnSalvar.nextElementSibling); 
 
         form.addEventListener("submit", async (e) => {
         e.preventDefault();

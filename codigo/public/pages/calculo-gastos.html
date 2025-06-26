@@ -63,11 +63,44 @@
         </form>
       </div>
 
-      <div id="resultado" class="mt-4"></div>
       <div id="historico" class="mt-4"></div>
       
       <div class="mt-4 text-center">
         <canvas id="grafico" style="max-height: 400px;"></canvas>
+      </div>
+
+      <!-- Estrutura dos resultados adicionada diretamente no HTML -->
+      <div id="resultado" class="mt-4" style="visibility: hidden;">
+        <div style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+          <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; text-align: center;">🔋 Resultados da Simulação</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">💸 Gasto Atual</p>
+              <p id="gastoAtual" style="font-size: 1.8rem; color: #dc3545; margin: 0; font-weight: bold;">--</p>
+              <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por mês</p>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">💰 Gasto com Economia</p>
+              <p id="gastoComEconomia" style="font-size: 1.8rem; color: var(--primary-color); margin: 0; font-weight: bold;">--</p>
+              <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por mês</p>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">📈 Economia Mensal</p>
+              <p id="economiaMensal" style="font-size: 1.8rem; color: #28a745; margin: 0; font-weight: bold;">--</p>
+              <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">economia</p>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🎯 Economia Anual</p>
+              <p id="economiaAnual" style="font-size: 1.8rem; color: #28a745; margin: 0; font-weight: bold;">--</p>
+              <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por ano</p>
+            </div>
+          </div>
+          <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🌱 Impacto Ambiental</p>
+            <p id="reducaoCO2" style="font-size: 1.5rem; color: #28a745; margin: 0; font-weight: bold;">-- kg CO2</p>
+            <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">redução por mês</p>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -102,5 +135,49 @@
 
   <script type="module" src="/assets/js/modules/consumo.js"></script>
   <script type="module" src="/assets/js/main.js"></script>
+
+  <script>
+    function exibirResultado(calculo) {
+      const resultado = document.getElementById('resultado');
+      resultado.style.display = 'block'; // Mostra a seção de resultados
+      resultado.innerHTML = `
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">💸 Gasto Atual</p>
+            <p id="gastoAtual" style="font-size: 1.8rem; color: #dc3545; margin: 0; font-weight: bold;">R$ ${calculo.resultados.gastoAtual.toFixed(2)}</p>
+            <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por mês</p>
+          </div>
+          <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">💰 Gasto com Economia</p>
+            <p id="gastoComEconomia" style="font-size: 1.8rem; color: var(--primary-color); margin: 0; font-weight: bold;">R$ ${calculo.resultados.gastoComEconomia.toFixed(2)}</p>
+            <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por mês</p>
+          </div>
+          <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">📈 Economia Mensal</p>
+            <p id="economiaMensal" style="font-size: 1.8rem; color: #28a745; margin: 0; font-weight: bold;">R$ ${calculo.resultados.economiaMensal.toFixed(2)}</p>
+            <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">economia</p>
+          </div>
+          <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🎯 Economia Anual</p>
+            <p id="economiaAnual" style="font-size: 1.8rem; color: #28a745; margin: 0; font-weight: bold;">R$ ${calculo.resultados.economiaAnual.toFixed(2)}</p>
+            <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">por ano</p>
+          </div>
+        </div>
+        <div style="background: white; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <p style="margin: 0 0 0.5rem 0; font-weight: 600; color: #666;">🌱 Impacto Ambiental</p>
+          <p id="reducaoCO2" style="font-size: 1.5rem; color: #28a745; margin: 0; font-weight: bold;">-${calculo.resultados.reducaoCO2.toFixed(2)} kg CO2</p>
+          <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0 0;">redução por mês</p>
+        </div>
+      `;
+
+      // Chame atualizarGrafico para criar ou atualizar o gráfico
+      atualizarGrafico(calculo);
+      resultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function atualizarGrafico(calculo) {
+      // ...existing code...
+    }
+  </script>
 </body>
 </html>

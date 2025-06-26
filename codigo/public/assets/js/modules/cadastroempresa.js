@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const formData = new FormData(e.target);
         const companyData = {
-            usuarioId: usuarioLogado.id, 
+            // Removendo usuarioId daqui, pois a página "Minhas Empresas" será removida
+            // Se você quiser manter o usuarioId para outros fins (ex: filtros no mapa),
+            // podemos discutir onde isso se encaixaria melhor.
+            // usuarioId: usuarioLogado.id, 
             nome: formData.get('nome'),
             descricao: formData.get('descricao'),
             categoria: formData.get('categoria'),
@@ -57,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (preview) preview.innerHTML = '';
             
             setTimeout(() => {
-                window.location.href = '/pages/minhas-empresas.html'; 
+                window.location.href = '/pages/pagina-exposicao-empresas.html'; // Redireciona para a página de exposição geral
             }, 1000);
             
         } catch (error) {
