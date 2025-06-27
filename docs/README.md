@@ -196,16 +196,16 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 Estes são os protótipos de telas do sistema.
 
 INTERFACE DO SITE
-(![alt text](api.jpg))
+![API google maps](image-3.png)
 
-(![alt text](front.jpg))
+![Tela inicial do FAVSUSTAIN](image-4.png)
 
-(![alt text](z.jpg))
+![Pagina de empresas parceiras](image-5.png)
 
 ### User Flow
 
 FLUXO DE TELAS
-(![fluxo de telas](userflow.jpg))
+(![Tela de login](image-2.png))
 
 # Metodologia
 
