@@ -10,12 +10,16 @@ Informações básicas do projeto.
   * Ricardo Santana Kill      (https://github.com/Knumi5)
   * André Luiz figueiredo Rosa (https://github.com/Dedecb)
   * Bruno da Silva de Paulo (https://github.com/BrUnOBSP-SVANTH)
-  * João Marcelo sposito (https://github.com/joaomsposito)
 
 
 # Contexto
 
-Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa e público-alvo.
+O Favsustein é uma plataforma web inovadora desenvolvida para democratizar o acesso à economia de energia nas comunidades periféricas do Brasil. O projeto visa conectar moradores de periferia com empresas especializadas em soluções de energia renovável e eficiência energética, oferecendo ferramentas práticas para calcular gastos
+energéticos, identificar oportunidades de economia e encontrar fornecedores confiáveis em suas regiões. 
+
+A plataforma foi concebida e desenvolvida por uma equipe de estudantes de Engenharia de Software da PUC Minas, unindo conhecimento técnico com responsabilidade social.
+O sistema oferece funcionalidades como calculadora de economia energética, mapeamento de empresas especializadas, sistema de cadastro para usuários e
+empresas, e ferramentas de análise de consumo.
 
 ## Problema
 
@@ -262,91 +266,204 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 -Problemas na API
 -Bug em layout mobile
 
+# Solução Implementada
+
+Esta seção apresenta todos os detalhes da solução criada no projeto.
+
+## Vídeo do Projeto
+
+O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
+
+[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
 
 ## Funcionalidades
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 
+##### Funcionalidade 1 - Cadastro de usuários
 
+Permite o cadastro do usuario, pedindo nome, email, cpf, senha e cep (cep e cpf são verificados na area de cadastro e não permitimos que o email se repita)
+
+* **Estrutura de dados:** [usuarios](#estrutura-de-dados---usuários)
+* **Instruções de acesso:**
+  * Abra o site e vá para a area de cadastrar
+  * preencha todos os dados corretamente
+  * clique em cadastrar 
 * **Tela da funcionalidade**:
+![tela de cadastro de usuario 1](image.png)
 
-![Cadastro de usuário](userflow.jpg)
+![tela de cadastro de usuario 2](image-1.png)
 
-![Cadastro de Empresas](z.jpg)
+##### Funcionalidade 2 - Login de Usuário
 
-![Api google maps](api.jpg)
+Permite que o usuário acesse sua conta utilizando e-mail e senha cadastrados previamente. O sistema valida as credenciais e redireciona o usuário à página principal da aplicação.
 
-![Detalhamento do projeto](front.jpg)
+* **Estrutura de dados:** [usuarios](#estrutura-de-dados---usuários)
+* **Instruções de acesso:**
+  * Acesse a página inicial do site
+  * Clique em "Login"
+  * Insira seu e-mail e senha válidos
+  * Clique em "Login" 
+* **Tela da funcionalidade**:
+![tela de login de usuario ](image-2.png)
+
+##### Funcionalidade 3 - Cadastro de Empresas
+
+Permite que um usuário cadastrado registre uma empresa fornecedora de serviços sustentáveis, informando nome, descrição, serviços, contato e localização.
+
+* **Estrutura de dados:** [Empresas](#estrutura-de-dados---empresas)
+* **Instruções de acesso:**
+  * Acesse sua conta na plataforma
+  * Vá até a seção “Cadastrar Empresa”
+  * Preencha os campos
+  * clique em cadastrar 
+* **Tela da funcionalidade**:
+![Tela de cadastro de empresa](image-6.png)
+
+##### Funcionalidade 4 - Cálculo de Economia de Energia
+
+Permite que o usuário simule seu consumo energético mensal e descubra quanto poderia economizar utilizando soluções sustentáveis.
+* **Estrutura de dados:** [calculos](#estrutura-de-dados---calculos-de-economia)
+* **Instruções de acesso:** 
+  * Acesse sua conta
+  * Vá até a seção calculadora”
+  * Preencha os dados de consumo (consumo atual em kWh, tarifa, região)
+  * Clique em “Calcular”
+* **Tela da funcionalidade**:
+![Calculadora de economia](image-7.png)
+
+##### Funcionalidade 5 - Mapa de Empresas com API Google Maps
+
+Apresenta no mapa interativo todas as empresas cadastradas na plataforma, utilizando a Google Maps API. Cada empresa é exibida com um marcador e informações de contato.
+
+* **Estrutura de dados:** [empresas](#estrutura-de-dados---empresas)
+* **Instruções de acesso:**
+  * Vá até a seção “Mapa”
+  * Aguarde o carregamento do mapa com base na sua localização
+  * Clique nos marcadores para visualizar os dados de cada empresa
+* **Tela da funcionalidade**:
+![Mapa localizador de empresas](image-8.png)
+
 
 > 
 ## Estruturas de Dados
 
-Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
+Esta seção descreve as principais estruturas de dados utilizadas na solução Fav Sustain, que sustentam o funcionamento do sistema, como o cadastro de usuários, empresas, simulações de economia energética e metadados da aplicação. Os dados são armazenados em formato JSON, garantindo interoperabilidade e facilidade de manipulação com tecnologias web modernas.
 
+##### Estrutura de Dados - Usuários  
+
+Registra os moradores e microempreendedores que utilizam a plataforma para simular economia e encontrar fornecedores sustentáveis.
+
+```json
 {
-  "usuarios": [
-    {
-      "id": 1,
-      "tipo": "morador",
-      "nome": "Maria Silva",
-      "email": "maria@email.com",
-      "senha": "$2a$10$hashedpassword",
-      "telefone": "31987654321",
-      "endereco": {
-        "cep": "30535-510",
-        "logradouro": "Rua A",
-        "numero": "100",
-        "complemento": "Casa 2"
-      },
-      "consumoMedio": 150,
-      "dataCadastro": "2023-11-15"
-    }
-  ],
-  
-
-"empresas": [
-    {
-      "id": 1,
-      "cnpj": "12.345.678/0001-90",
-      "razaoSocial": "Energia Solar Comunitária LTDA",
-      "nomeFantasia": "SolarFavela",
-      "especialidades": ["instalacao", "manutencao"],
-      "endereco": {
-        "cep": "30535-000",
-        "logradouro": "Av. B",
-        "numero": "200"
-      },
-      "contato": {
-        "telefone": "3133334444",
-        "email": "contato@solarfavela.com.br"
-      },
-      "avaliacao": 4.8,
-      "precoMedio": 2500,
-      "coordenadas": {
-        "lat": -19.9191,
-        "lng": -43.9387
-      }
-    }
-  ],
-
-
-  "simulacoes": [
-    {
-      "id": 1,
-      "usuarioId": 1,
-      "data": "2023-11-15T10:30:00Z",
-      "consumoMensalKwh": 150,
-      "valorConta": 250.00,
-      "resultado": {
-        "economiaMensal": 175.00,
-        "paybackAnos": 3.5,
-        "placasRecomendadas": 4
-      },
-      "empresasSugeridas": [1]
-    }
-  ]
+  "id": "nMMIGtH",
+  "nome": "joao",
+  "email": "joaopedrosalesdedeus@gmail.com",
+  "senha": "Teste1234!",
+  "cpf": "14047123641",
+  "endereco": {
+    "cep": "30840040",
+    "logradouro": "Rua dos Comerciantes",
+    "bairro": "Alípio de Melo",
+    "cidade": "Belo Horizonte",
+    "estado": "MG"
+  },
+  "dataCadastro": "2025-06-23T19:08:34.627Z",
+  "ultimoAcesso": "2025-06-23T21:45:05.149Z"
 }
+```
+##### Estrutura de Dados - Empresas
+
+Contém os dados das empresas que prestam serviços de energia sustentável, como instalação e manutenção de painéis solares.
+
+```json
+{
+  "id": "LTHz7ul",
+  "nome": "teste",
+  "descricao": "teste",
+  "categoria": "nova",
+  "servicos": ["teste"],
+  "contato": {
+    "email": "joaopedrosalesdedeus@gmail.com",
+    "telefone": "31983251584",
+    "site": "https://www.monsterenergy.com/pt-br/"
+  },
+  "endereco": {
+    "logradouro": "comerciantes 175",
+    "coordenadas": {
+      "latitude": 0,
+      "longitude": 0
+    }
+  },
+  "historico": "teste",
+  "dataCadastro": "2025-06-23T19:09:46.980Z",
+  "status": "ativo",
+  "usuarioId": "nMMIGtH",
+  "avaliacao": 0,
+  "projetos": 0,
+  "economia_media": "N/A",
+  "imagem": "/assets/img/empresa-nova-1.svg"
+}
+```
+
+##### Estrutura de Dados - Calculos de economia 
+
+Armazena as simulações de consumo energético realizadas pelos usuários, com cálculo de economia, projeção anual e impacto ambiental.
+
+```json
+{
+  "id": "calc_1750961722759",
+  "usuarioId": "nMMIGtH",
+  "data": "2025-06-26T18:15:22.759Z",
+  "consumo": {
+    "atual": 300,
+    "tarifa": 0.55,
+    "regiao": "Sul",
+    "economiaEsperada": 0.3,
+    "economiaCalculada": 90
+  },
+  "resultados": {
+    "gastoAtual": 165,
+    "gastoComEconomia": 115.5,
+    "economiaMensal": 49.5,
+    "economiaAnual": 594,
+    "reducaoCO2": 7.353
+  }
+}
+```
+
+##### Estrutura de Dados - Metadata 
+
+Guarda informações auxiliares do sistema, como versão da aplicação e data da última atualização da base de dados.
+
+```json
+{
+  "ultimaAtualizacao": "",
+  "versao": "1.0"
+}
+```
+
+## Módulos e APIs
+
+Esta seção apresenta os principais módulos, bibliotecas, frameworks e APIs utilizadas no desenvolvimento da solução Fav Sustain. A integração entre esses recursos permitiu construir uma aplicação funcional, responsiva e conectada com dados geográficos em tempo real.
+
+**Images**:
+
+* Unsplash- Utilizado como fonte de imagens de alta qualidade para compor a interface do sistema.
+ [https://unsplash.com/](https://unsplash.com/)
+
+**Fonts:**
+
+* Font Awesome – Biblioteca de ícones vetoriais utilizada para enriquecer a experiência visual da interface.
+ [https://fontawesome.com/](https://fontawesome.com/) 
+
+**Scripts:**
+
+* Bootstrap 5 – Utilizado para estilização, responsividade e componentes visuais do front-end. [https://getbootstrap.com/](https://getbootstrap.com/)
+* jQuery – Utilizado para facilitar manipulações DOM e requisições AJAX de forma simplificada. [http://www.jquery.com/](http://www.jquery.com/) 
+* JSON Server – Ferramenta utilizada para simular uma API RESTful com base em um arquivo db.json, permitindo testes locais com dados reais.
+ [https://github.com/typicode/json-server](https://github.com/typicode/json-server) 
+
 
 # Referências
 
