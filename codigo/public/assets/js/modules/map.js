@@ -1,12 +1,13 @@
-import { companyService } from './db-service.js';
+// mapa.js - Versão corrigida com dados fictícios
 
+// Variáveis globais
 let map;
 let markers = [];
 let directionsService;
 let directionsRenderer;
-let geocoder;
 
-const empresasFicticias = [
+// Dados fictícios de empresas com coordenadas reais
+const empresas = [
   {
     id: 1,
     nome: "EcoSolar Brasil",
@@ -19,7 +20,7 @@ const empresasFicticias = [
       telefone: "(11) 3456-7890",
       email: "contato@ecosolarbrasil.com.br"
     },
-    imagem: "/assets/img/empresa-recomendada-1.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
   },
   {
     id: 2,
@@ -33,7 +34,7 @@ const empresasFicticias = [
       telefone: "(21) 2345-6789",
       email: "info@greenpower.com.br"
     },
-    imagem: "/assets/img/empresa-recomendada-2.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
   },
   {
     id: 3,
@@ -47,7 +48,7 @@ const empresasFicticias = [
       telefone: "(31) 3456-7890",
       email: "social@suntech.com.br"
     },
-    imagem: "/assets/img/empresa-recomendada-3.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
   },
   {
     id: 4,
@@ -61,7 +62,7 @@ const empresasFicticias = [
       telefone: "(11) 9876-5432",
       email: "hello@inovasolar.tech"
     },
-    imagem: "/assets/img/empresa-nova-1.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
   },
   {
     id: 5,
@@ -75,7 +76,7 @@ const empresasFicticias = [
       telefone: "(85) 3210-9876",
       email: "atendimento@energiapop.com.br"
     },
-    imagem: "/assets/img/empresa-nova-2.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
   },
   {
     id: 6,
@@ -89,7 +90,7 @@ const empresasFicticias = [
       telefone: "(47) 3456-7890",
       email: "contato@solarflex.com.br"
     },
-    imagem: "/assets/img/empresa-nova-3.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
   },
   {
     id: 7,
@@ -103,7 +104,7 @@ const empresasFicticias = [
       telefone: "(11) 2345-6789",
       email: "institucional@solarpioneira.com.br"
     },
-    imagem: "/assets/img/empresa-pioneira-1.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
   },
   {
     id: 8,
@@ -117,7 +118,7 @@ const empresasFicticias = [
       telefone: "(61) 3456-7890",
       email: "projetos@brasilsolar.com.br"
     },
-    imagem: "/assets/img/empresa-pioneira-2.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
   },
   {
     id: 9,
@@ -131,7 +132,7 @@ const empresasFicticias = [
       telefone: "(19) 3456-7890",
       email: "engenharia@tradsolar.com.br"
     },
-    imagem: "/assets/img/empresa-pioneira-3.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
   },
   {
     id: 10,
@@ -145,22 +146,20 @@ const empresasFicticias = [
       telefone: "(81) 3333-4444",
       email: "contato@ventosolar.com.br"
     },
-    imagem: "/assets/img/empresa-pioneira-1.svg"
+    imagem: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
   }
 ];
 
-async function initMap() {
-  let empresas = await companyService.getAll();
-  if (!empresas || empresas.length === 0) {
-      empresas = empresasFicticias;
-  }
-
+// Função principal
+function initMap() {
   try {
-    const spinner = document.getElementById("loading-spinner");
-    if (spinner) spinner.style.display = "none";
+    // Esconde spinner de carregamento
+    const spinner = document.getElementById('loading-spinner');
+    if (spinner) spinner.style.display = 'none';
     
+    // Inicializa o mapa
     map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -15.788, lng: -47.879 },
+      center: { lat: -15.788, lng: -47.879 }, // Centro do Brasil
       zoom: 5,
       styles: [
         {
@@ -175,6 +174,7 @@ async function initMap() {
       ]
     });
 
+    // Inicializa serviços de rota
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer({
       map: map,
@@ -185,14 +185,17 @@ async function initMap() {
         strokeWeight: 4
       }
     });
-    geocoder = new google.maps.Geocoder();
 
+    // Configurações iniciais
     adicionarMarcadores(empresas);
     atualizarListaParceiros(empresas);
     aplicarEventosDeFiltro();
     aplicarEventoCalculoRota();
 
+    console.log("Mapa inicializado com sucesso!");
+
   } catch (error) {
+    console.error("Erro ao inicializar mapa:", error);
     const mapElement = document.getElementById("map");
     if (mapElement) {
       mapElement.innerHTML = `
@@ -205,32 +208,24 @@ async function initMap() {
   }
 }
 
-function getPosition(empresa) {
-    if (empresa.endereco && empresa.endereco.coordenadas && typeof empresa.endereco.coordenadas.latitude === 'number') {
-        return { lat: empresa.endereco.coordenadas.latitude, lng: empresa.endereco.coordenadas.longitude };
-    }
-    if (typeof empresa.lat === 'number') {
-        return { lat: empresa.lat, lng: empresa.lng };
-    }
-    return null;
-}
-
+// Função para adicionar marcadores
 function adicionarMarcadores(lista) {
+  // Limpa marcadores existentes
   markers.forEach(marker => marker.setMap(null));
   markers = [];
 
   lista.forEach(empresa => {
-    const position = getPosition(empresa);
-    if (!position) {
+    if (!empresa.lat || !empresa.lng) {
+      console.warn(`Empresa ${empresa.nome} sem coordenadas válidas`);
       return;
     }
 
     const marker = new google.maps.Marker({
-      position: position,
+      position: { lat: empresa.lat, lng: empresa.lng },
       map: map,
       title: empresa.nome,
       icon: {
-        url: empresa.imagem || "/assets/img/fav.jpeg",
+        url: empresa.imagem || "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
         scaledSize: new google.maps.Size(32, 32),
         anchor: new google.maps.Point(16, 32)
       }
@@ -241,14 +236,14 @@ function adicionarMarcadores(lista) {
         <div class="map-popup" style="min-width: 250px;">
           <h6 style="color: #2563eb; margin-bottom: 10px;">${empresa.nome}</h6>
           <div class="popup-content">
-            <p style="margin: 5px 0;"><strong>Tipo:</strong> ${empresa.tipo || empresa.categoria}</p>
-            <p style="margin: 5px 0;"><strong>Energia:</strong> ${empresa.tipoEnergia || 'Não especificado'}</p>
+            <p style="margin: 5px 0;"><strong>Tipo:</strong> ${empresa.tipo}</p>
+            <p style="margin: 5px 0;"><strong>Energia:</strong> ${empresa.tipoEnergia}</p>
             <p style="margin: 5px 0;"><strong>Telefone:</strong> ${empresa.contato.telefone}</p>
-            <p style="margin: 5px 0; font-size: 0.9em;">${empresa.contato.endereco || 'Endereço não informado'}</p>
+            <p style="margin: 5px 0; font-size: 0.9em;">${empresa.contato.endereco}</p>
             <div style="margin-top: 10px; display: flex; gap: 5px;">
               <button class="btn btn-sm btn-primary calcular-rota-btn" 
-                      data-lat="${position.lat}" 
-                      data-lng="${position.lng}"
+                      data-lat="${empresa.lat}" 
+                      data-lng="${empresa.lng}"
                       style="font-size: 0.8em;">
                 📍 Rota
               </button>
@@ -264,19 +259,21 @@ function adicionarMarcadores(lista) {
     });
 
     marker.addListener("click", () => {
+      // Fecha outras infowindows
       markers.forEach(m => {
         if (m.infowindow) m.infowindow.close();
       });
       infowindow.open(map, marker);
       marker.infowindow = infowindow;
       
+      // Adiciona event listeners aos botões do popup
       setTimeout(() => {
         const rotaBtn = document.querySelector('.calcular-rota-btn');
         const contatoBtn = document.querySelector('.contato-btn');
         
         if (rotaBtn) {
           rotaBtn.addEventListener('click', () => {
-            calcularRotaParaEmpresa(position.lat, position.lng);
+            calcularRotaParaEmpresa(empresa.lat, empresa.lng);
           });
         }
         
@@ -295,6 +292,7 @@ function adicionarMarcadores(lista) {
   });
 }
 
+// Função para atualizar a lista de empresas
 function atualizarListaParceiros(lista) {
   const ul = document.getElementById("partner-list");
   if (!ul) return;
@@ -302,9 +300,6 @@ function atualizarListaParceiros(lista) {
   ul.innerHTML = lista.length ? "" : '<li class="list-group-item">Nenhuma empresa encontrada</li>';
 
   lista.forEach(empresa => {
-    const position = getPosition(empresa);
-    if (!position) return;
-    
     const li = document.createElement("li");
     li.className = "list-group-item list-group-item-action";
     li.style.cursor = "pointer";
@@ -313,29 +308,31 @@ function atualizarListaParceiros(lista) {
         <div>
           <strong style="color: #2563eb;">${empresa.nome}</strong>
           <div class="text-muted small">
-            ${empresa.tipo || empresa.categoria} • ${empresa.tipoEnergia || 'N/A'}
+            ${empresa.tipo} • ${empresa.tipoEnergia}
           </div>
           <div class="text-muted" style="font-size: 0.8em;">
             ${empresa.contato.telefone}
           </div>
         </div>
         <button class="btn btn-sm btn-outline-primary ver-no-mapa-btn" 
-                data-lat="${position.lat}" 
-                data-lng="${position.lng}"
+                data-lat="${empresa.lat}" 
+                data-lng="${empresa.lng}"
                 data-nome="${empresa.nome}">
           📍 Ver
         </button>
       </div>
     `;
 
+    // Event listener para o botão "Ver no Mapa"
     li.querySelector('.ver-no-mapa-btn').addEventListener('click', (e) => {
       e.stopPropagation();
-      map.setCenter({ lat: position.lat, lng: position.lng });
+      map.setCenter({ lat: empresa.lat, lng: empresa.lng });
       map.setZoom(15);
       
+      // Encontra e clica no marcador correspondente
       const marker = markers.find(m => 
-        m.getPosition().lat() === position.lat && 
-        m.getPosition().lng() === position.lng
+        m.getPosition().lat() === empresa.lat && 
+        m.getPosition().lng() === empresa.lng
       );
       if (marker) {
         google.maps.event.trigger(marker, 'click');
@@ -346,6 +343,7 @@ function atualizarListaParceiros(lista) {
   });
 }
 
+// Funções auxiliares
 function aplicarEventosDeFiltro() {
   const searchBox = document.getElementById("searchBox");
   const filtroCategoria = document.getElementById("filtroCategoria");
@@ -356,12 +354,7 @@ function aplicarEventosDeFiltro() {
   if (filtroTipo) filtroTipo.addEventListener("change", aplicarFiltros);
 }
 
-async function aplicarFiltros() {
-  let empresas = await companyService.getAll();
-  if (!empresas || empresas.length === 0) {
-      empresas = empresasFicticias;
-  }
-  
+function aplicarFiltros() {
   const searchBox = document.getElementById("searchBox");
   const filtroCategoria = document.getElementById("filtroCategoria");
   const filtroTipo = document.getElementById("filtroTipo");
@@ -391,11 +384,13 @@ function calcularRotaParaEmpresa(lat, lng) {
         calcularERenderizarRota(origem, { lat, lng });
       },
       () => {
+        // Fallback para São Paulo se não conseguir localização
         const origem = { lat: -23.5505, lng: -46.6333 };
         calcularERenderizarRota(origem, { lat, lng });
       }
     );
   } else {
+    // Fallback para São Paulo
     const origem = { lat: -23.5505, lng: -46.6333 };
     calcularERenderizarRota(origem, { lat, lng });
   }
@@ -403,6 +398,7 @@ function calcularRotaParaEmpresa(lat, lng) {
 
 function calcularERenderizarRota(origem, destino) {
   if (!directionsService || !directionsRenderer) {
+    console.error("Serviços de direção não inicializados");
     return;
   }
 
@@ -419,6 +415,7 @@ function calcularERenderizarRota(origem, destino) {
         routePanel.innerHTML = '<div class="alert alert-success">Rota calculada com sucesso!</div>';
       }
     } else {
+      console.error("Erro ao calcular rota:", status);
       if (routePanel) {
         routePanel.innerHTML = `
           <div class="alert alert-warning">
@@ -455,45 +452,19 @@ function aplicarEventoCalculoRota() {
       return;
     }
 
-    // Geocodificar origem e destino antes de calcular a rota
-    geocoder.geocode({ 'address': origem }, (resultsOrigem, statusOrigem) => {
-      if (statusOrigem === 'OK' && resultsOrigem[0]) {
-        const latLngOrigem = resultsOrigem[0].geometry.location;
-        geocoder.geocode({ 'address': destino }, (resultsDestino, statusDestino) => {
-          if (statusDestino === 'OK' && resultsDestino[0]) {
-            const latLngDestino = resultsDestino[0].geometry.location;
-            calcularERenderizarRota(latLngOrigem, latLngDestino);
-          } else {
-            if (routePanel) {
-              routePanel.innerHTML = `
-                <div class="alert alert-warning">
-                  Erro ao geocodificar o destino: ${statusDestino}
-                </div>
-              `;
-            }
-          }
-        });
-      } else {
-        if (routePanel) {
-          routePanel.innerHTML = `
-            <div class="alert alert-warning">
-              Erro ao geocodificar a origem: ${statusOrigem}
-            </div>
-          `;
-        }
-      }
-    });
+    calcularERenderizarRota(origem, destino);
   });
 }
 
+// Garante que a função initMap está disponível globalmente
 window.initMap = initMap;
 
+// Inicialização alternativa caso o callback do Google Maps falhe
 document.addEventListener('DOMContentLoaded', () => {
+  // Aguarda um pouco para o Google Maps carregar
   setTimeout(() => {
     if (typeof google !== 'undefined' && google.maps && !map) {
       initMap();
     }
   }, 1000);
 });
-
-
