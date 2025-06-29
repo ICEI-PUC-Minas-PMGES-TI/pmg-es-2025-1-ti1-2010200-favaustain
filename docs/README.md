@@ -221,10 +221,9 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 
 | Ambiente                    | Plataforma | Link de acesso                                     |
 | --------------------------- | ---------- | -------------------------------------------------- |
-| Processo de Design Thinking | Miro       | https://miro.com/app/board/uXjVIZ5HaeI=/?share_link_id=456018721310 |
-| Repositório de código     | GitHub     | https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2010200-favaustain |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX |
-| Protótipo Interativo       | MarvelApp  | https://marvelapp.com/XXXXXXX |
+| Processo de Design Thinking | Miro       | ( https://miro.com/app/board/uXjVIZ5HaeI=/?share_link_id=456018721310 )|
+| Repositório de código     | GitHub     |   ( https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti1-2010200-favaustain.git )|
+| Hospedagem do site          | Render     | ( https://9a5dc9cb-cc39-496a-bb5a-489e7a201252-00-1trx2orxgq11c.picard.replit.dev/ ) |
 
 ## Gerenciamento do Projeto
 
@@ -272,9 +271,9 @@ Esta seção apresenta todos os detalhes da solução criada no projeto.
 
 ## Vídeo do Projeto
 
-O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
+O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. 
 
-[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
+[![Vídeo do projeto](images/video.png)](https://youtu.be/kmwyUee2kNg)
 
 ## Funcionalidades
 
