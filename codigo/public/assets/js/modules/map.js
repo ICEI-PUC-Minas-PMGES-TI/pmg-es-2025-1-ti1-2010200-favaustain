@@ -4,6 +4,7 @@ let map;
 let markers = [];
 let directionsService;
 let directionsRenderer;
+let geocoder;
 
 const empresasFicticias = [
   {
@@ -155,8 +156,8 @@ async function initMap() {
   }
 
   try {
-    const spinner = document.getElementById('loading-spinner');
-    if (spinner) spinner.style.display = 'none';
+    const spinner = document.getElementById("loading-spinner");
+    if (spinner) spinner.style.display = "none";
     
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: -15.788, lng: -47.879 },
@@ -184,6 +185,7 @@ async function initMap() {
         strokeWeight: 4
       }
     });
+    geocoder = new google.maps.Geocoder();
 
     adicionarMarcadores(empresas);
     atualizarListaParceiros(empresas);
@@ -453,7 +455,34 @@ function aplicarEventoCalculoRota() {
       return;
     }
 
-    calcularERenderizarRota(origem, destino);
+    // Geocodificar origem e destino antes de calcular a rota
+    geocoder.geocode({ 'address': origem }, (resultsOrigem, statusOrigem) => {
+      if (statusOrigem === 'OK' && resultsOrigem[0]) {
+        const latLngOrigem = resultsOrigem[0].geometry.location;
+        geocoder.geocode({ 'address': destino }, (resultsDestino, statusDestino) => {
+          if (statusDestino === 'OK' && resultsDestino[0]) {
+            const latLngDestino = resultsDestino[0].geometry.location;
+            calcularERenderizarRota(latLngOrigem, latLngDestino);
+          } else {
+            if (routePanel) {
+              routePanel.innerHTML = `
+                <div class="alert alert-warning">
+                  Erro ao geocodificar o destino: ${statusDestino}
+                </div>
+              `;
+            }
+          }
+        });
+      } else {
+        if (routePanel) {
+          routePanel.innerHTML = `
+            <div class="alert alert-warning">
+              Erro ao geocodificar a origem: ${statusOrigem}
+            </div>
+          `;
+        }
+      }
+    });
   });
 }
 
@@ -466,3 +495,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 1000);
 });
+
+
